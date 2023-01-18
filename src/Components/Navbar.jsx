@@ -102,7 +102,7 @@ const {WomenEthnic} =navListData;
         
       </div>
       {/* Navbar */}
-      <div className='hidden lg:block'>
+      <div className='hidden lg:block '>
         <ul className="flex flex-row justify-between px-8 border max-[1099px]:px-4">
          {
           catList.map.length > 0 && catList.map((ele,ind)=>(
@@ -114,7 +114,7 @@ const {WomenEthnic} =navListData;
         {/* After hover part of category */}
         <div
         onMouseLeave={(e) => setNavCatSelect("")}
-          className={` flex  w-[95%] ml-[40px] z-[9999] absolute shadow-2xl rounded-br-[20px] rounded-bl-[20px] ${
+          className={` flex  w-[95%] ml-[40px] z-[9999] absolute shadow-2xl rounded-br-[20px] bg-[#ffffff] rounded-bl-[20px] ${
             navListData[navCatSelect] ?  'block' :'hidden'
           }`}
         >
