@@ -6,85 +6,46 @@ import { FiShoppingCart } from 'react-icons/fi'
 import { RxCross2 } from 'react-icons/rx'
 import logo from '../assets/logo.png'
 import { Link, useNavigate } from 'react-router-dom'
+import {navListData} from '../All Data/navCategoryList'
 
-const navListData = [
-  {
-    category: 'All Women Ethnic',
-    sub_category: ['View All'],
-  },
-  {
-    category: 'Sarees',
-    sub_category: [
-      'All Sarees',
-      'Silk Sarees',
-      'Cotton Silk Sarees',
-      'Cotton Sarees',
-      'Georgette Sarees',
-      'Chiffon Sarees',
-      'Satin Sarees',
-      'Embroidered Sarees',
-    ],
-  },
-  {
-    category: 'Kurtis',
-    sub_category: [
-      'All Kurtis',
-      'Anarkali',
-      'Kurties',
-      'Rayon',
-      'Kurties',
-      'Cotton',
-      'Kurties',
-      'Embroidered',
-      'Kurtis',
-    ],
-  },
-  {
-    category: 'Kurta Sets',
-    sub_category: ['All Kurtis Sets'],
-  },
-  {
-    category: 'Suits & Dress Material',
-    sub_category: [
-      'All Suits & Dress Material',
-      'Cotton',
-      'Embroidered Suits',
-      'Chanderi Suits',
-    ],
-  },
-  {
-    category: 'Other Ethnic',
-    sub_category: [
-      'Blouses',
-      'Dupattas',
-      'Lehanga',
-      'Gown',
-      'Ethnic Bottomwear',
-    ],
-  },
-]
+const catList=["Women Ethnic",
+"Women Western",
+"Men",
+ "Kids",
+"Home & Kitchen",
+"Beauty & Health",
+"Jewellery & Accessories",
+"Bags & Footwear",
+"Electronics"]
 
 const Navbar = () => {
   const [searchText, setSearchText] = useState('')
   const [navCatSelect, setNavCatSelect] = useState('');
-
+  const [navCatData, setNavCatData] = useState([])
+const {WomenEthnic} =navListData;
   const navigate = useNavigate();
 
 
   const searchTextClearHandler = () => {
     setSearchText('')
   }
+  const navHoverHandler = (hoverdCat) => {
+    setNavCatSelect(hoverdCat)
+       hoverdCat && setNavCatData(navListData[hoverdCat])
+  }
+
+  console.log(navCatSelect)
   return (
-    <div>
-      <div className="border-b-[1.2px]  border-gray-400 flex px-8 items-center justify-between">
+    <div className='sticky top-0 bg-[#ffffff]'>
+      <div onMouseEnter={() => setNavCatSelect("")} className="border-b-[1.2px]  flex-col-reverse lg:flex-row  border-gray-400 flex px-8 items-center justify-between">
         {/* nav-top left side div */}
-        <div className="flex justify-center items-center">
-          <div className="w-[170px]">
+        <div className="flex flex-col w-[100%]  lg:flex-row items-center border  justify-between lg:w-[40%]  gap-x-[40px] ">
+          <div className="w-[60px] my-2 rounded-3xl hidden lg:block">
             {/* logo */}
-            <Link to="/"><img className="w-[100%]" src={logo} alt="logo" /></Link>
+            <Link to="/"><img className="w-[100%]  rounded-3xl" src={logo} alt="logo" /></Link>
           </div>
           {/*  input box div */}
-          <div className="border-cyan-400  rounded-lg  gap-x-1 px-2 py-2  flex justify-center items-center border shadow-md">
+          <div className="flex items-center justify-center px-2 py-2 rounded-lg lg:w-[400px] shadow-md border border-cyan-400 gap-x-1  w-[100%]">
             <div className="flex items-center font-bold text-slate-400">
               <CiSearch size={25} />
             </div>
@@ -93,7 +54,7 @@ const Navbar = () => {
               onChange={(e) => setSearchText(e.target.value)}
               type="text"
               placeholder="Try Saree, Kurti or Search by Product Code"
-              className=" rounded-sm flex text-[15px] font-[600] w-[300px] outline-none "
+              className=" rounded-sm flex sm:text-[15px] text-[9px] font-[600]   w-[100%] outline-none "
             />
             <div
               onClick={searchTextClearHandler}
@@ -107,62 +68,60 @@ const Navbar = () => {
         </div>
         {/* nav-top right side div */}
         
-        <div className="flex  gap-4 justify-between  items-center">
-          <div className="flex flex-row justify-between  items-center">
+        <div className="flex items-center justify-between gap-4 lg:w-[40%]  w-[100%]">
+        <div className="w-[60px] my-2 rounded-3xl lg:hidden sm:block">
+            {/* logo */}
+            <Link to="/"><img className="w-[100%] rounded-3xl" src={logo} alt="logo" /></Link>
+          </div>
+        <div className='hidden lg:block'>
+          <div className="flex flex-row items-center justify-between ">
             <div>
               <TfiMobile size={20} />
             </div>
             <div>Download App</div>
-          </div>
-          <div className="h-[45px] border border-gray-400"></div>
-          <div className="">Become a Supplier</div>
-          <div className="h-[45px] border border-gray-400"></div>
-          <div className="flex flex-col  p-2 justify-center items-center">
-            <div>
-              <VscAccount size={20} />
             </div>
-            <div>Profile</div>
           </div>
-          <div className="flex flex-col  p-2 justify-center items-center">
-            <div>
-              <FiShoppingCart size={20} />
-            </div>
-            <div>Cart</div>
+          <div className="h-[45px] border border-gray-400 hidden lg:block"></div>
+          <div className="hidden lg:block">Become a Supplier</div>
+          <div className="h-[45px] border border-gray-400  hidden lg:block"></div>
+          <div className='flex'>
+           <div className="flex flex-col items-center justify-center p-2 ">
+          <div className=''>
+            <VscAccount size={20} />
           </div>
+          <div className=''>Profile</div>
         </div>
+        <div className="flex flex-col items-center justify-center p-2">
+          <div>
+            <FiShoppingCart size={20} />
+          </div>
+          <div>Cart</div>
+        </div></div>
+         
+        </div>
+        
       </div>
       {/* Navbar */}
-      <div>
-        <ul className="flex border justify-between   px-8">
-          <li
-            className="navlist_category  "
-            onMouseEnter={(e) => setNavCatSelect(e.target.textContent)}
-            onMouseLeave={(e) => setNavCatSelect(e.target.textContent)}
-          >
-          Women Ethnic
-            {/* Navbar category */}
-          </li>
-          <li className="navlist_category">Women Western</li>
-          <li className="navlist_category">Men</li>
-          <li className="navlist_category">Kids</li>
-          <li className="navlist_category">Home & Kitchen</li>
-          <li className="navlist_category">Beauty & Health</li>
-          <li className="navlist_category">Jewellery & Accessories</li>
-          <li className="navlist_category">Bags & Footwear</li>
-          <li className="navlist_category">Electronics</li>
+      <div className='hidden lg:block'>
+        <ul className="flex flex-row justify-between px-8 border max-[1099px]:px-4">
+         {
+          catList.map.length > 0 && catList.map((ele,ind)=>(
+             <li key={ind} onMouseEnter={(e) => navHoverHandler(e.target.textContent)} className={` py-[8px]  ${ navCatSelect === ele && "navlist_category_after_hover"} `}>{ele}</li>
+          )) 
+         }
         </ul>
 
         {/* After hover part of category */}
         <div
         onMouseLeave={(e) => setNavCatSelect("")}
-          className={` flex  w-[95%] ml-[40px] z-[9999] shadow-2xl rounded-br-[20px] rounded-bl-[20px] ${
-            navCatSelect === 'Women Ethnic' ?  'block' :'hidden'
+          className={` flex  w-[95%] ml-[40px] z-[9999] absolute shadow-2xl rounded-br-[20px] rounded-bl-[20px] ${
+            navListData[navCatSelect] ?  'block' :'hidden'
           }`}
         >
           {/*  All Womens Ethnenic */}
 
           {/* first map for all categories under the navbar category one by one */}
-          {navListData.map(({category,sub_category},index) => (
+          {navCatData.length > 0 && navCatData.map(({category,sub_category},index) => (
             <ul key={index} className={` ${index%2===0 ? "bg-[#ffffff]" : "bg-[#e5e9f0]" } px-[6px] py-2 rounded-bl-[90px]`}>
               <li className="text-[#F43397] font-[600]   mb-3 ">
                {category}

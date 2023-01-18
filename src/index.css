@@ -3,16 +3,17 @@
 @tailwind utilities;
 
 @layer components{
-    .navlist_category{
-        padding: 12px 8px;
-    }
-    .navlist_category:hover{
+   
+    .navlist_category_after_hover{
        color: #F43397;
        border-bottom: 2px solid #F43397;
        cursor: pointer;
- 
-
        
       }
+      @media only screen and (min-width: 1024px) {
+        .sm_logo {
+            display: block;
+        }
+    }
 
 }
