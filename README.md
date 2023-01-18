@@ -8,7 +8,7 @@ https://www.meesho.com/
 
 payment page ->ravi;
 
- daynamic product page admin panel ->rahul
+ daynamic product, page admin panel ->rahul
 
 home, page login page -> Mohammad Sahil
 
