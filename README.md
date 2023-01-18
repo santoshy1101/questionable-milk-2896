@@ -5,6 +5,6 @@ womens_Ethnic [all saree], home furnishing[] ,[bedsheet,doormet] ,kitchen[kitche
 
 payment page ->ravi;
 
- daynamic product page ->rahul
+ daynamic product page admin panel ->rahul
 
 home, page login page -> Mohammad Sahil
