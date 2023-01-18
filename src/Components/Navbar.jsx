@@ -34,7 +34,7 @@ const {WomenEthnic} =navListData;
        hoverdCat && setNavCatData(navListData[hoverdCat])
   }
 
-  console.log(navCatSelect)
+  // console.log(navCatSelect)
   return (
     <div className='sticky top-0 bg-[#ffffff]'>
       <div onMouseEnter={() => setNavCatSelect("")} className="border-b-[1.2px]  flex-col-reverse lg:flex-row  border-gray-400 flex px-8 items-center justify-between">

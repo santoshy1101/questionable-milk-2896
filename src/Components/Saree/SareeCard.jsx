@@ -1,53 +1,61 @@
-import React from 'react'
-import {Box,Badge} from "@chakra-ui/react"
-import { Image } from '@chakra-ui/react'
-import { StarIcon} from '@chakra-ui/icons'
+import React from "react";
+import { Box, Badge } from "@chakra-ui/react";
+import { Image } from "@chakra-ui/react";
+import { StarIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
 //import {AiFillStar} from "react-icons/ai"
 
-const SareeCard = ({brand,dis_price,discount,id,image,name,og_price}) => {
+const SareeCard = ({
+  brand,
+  dis_price,
+  discount,
+  id,
+  image,
+  name,
+  og_price,
+}) => {
   return (
-    <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
-    <Image src={image} alt="Image" height='350px' width='100%'/>
+    <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
+      <Link to={`/All Sarees/${id}`}>
+        <Image src={image} alt="Image" height="350px" width="100%" />
 
-    <Box p='6'>
-      <Box
-        mt='1'
-        fontWeight='semibold'
-        as='h4'
-        lineHeight='tight'
-        noOfLines={1}
-      >
-        {name}
-      </Box>
+        <Box p="6">
+          <Box
+            mt="1"
+            fontWeight="semibold"
+            as="h4"
+            lineHeight="tight"
+            noOfLines={1}
+          >
+            {name}
+          </Box>
 
-      <Box>
-        {dis_price }
-        <Box as='span' color='gray.600' fontSize='sm'>
-            {" onwards"}
-        </Box><br />
-        <Badge borderRadius='full' px='2' colorScheme='teal'>
-          Free Delivery
-        </Badge>
-      </Box>
-<Box width='fit-content' margin='auto'>
-<Box display='flex' mt='2' alignItems='center'>
-        {Array(5)
-          .fill('')
-          .map((_, i) => (
-            <StarIcon
-              key={i}
-              color={i < 4 ? 'teal.500' : 'gray.300'}
-            />
-          ))}
-        <Box as='span' ml='2' color='gray.600' fontSize='sm'>
-          {13} reviews
+          <Box>
+            {dis_price}
+            <Box as="span" color="gray.600" fontSize="sm">
+              {" onwards"}
+            </Box>
+            <br />
+            <Badge borderRadius="full" px="2" colorScheme="teal">
+              Free Delivery
+            </Badge>
+          </Box>
+          <Box width="fit-content" margin="auto">
+            <Box display="flex" mt="2" alignItems="center">
+              {Array(5)
+                .fill("")
+                .map((_, i) => (
+                  <StarIcon key={i} color={i < 4 ? "teal.500" : "gray.300"} />
+                ))}
+              <Box as="span" ml="2" color="gray.600" fontSize="sm">
+                {13} reviews
+              </Box>
+            </Box>
+          </Box>
         </Box>
-      </Box>
-</Box>
-     
+      </Link>
     </Box>
-  </Box>
-  )
-}
+  );
+};
 
 export default SareeCard;
