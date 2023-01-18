@@ -6,7 +6,7 @@ https://www.meesho.com/
 <h3>
  womens_Ethnic [all saree], home furnishing[] ,[bedsheet,doormet] ,kitchen[kitchen storage] ,western [top,dresss]-> sakill;
 
-payment page ->ravi;
+address & payment page ->ravi;
 
  daynamic product, page admin panel ->rahul
 
