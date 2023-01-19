@@ -7,6 +7,7 @@ import Home from "../Pages/Home";
 import SingleProductPage from "../Routes/SingleProductPage";
 
 import { singleProductName } from "../All Data/singleProductName";
+import Address from "../Pages/Address";
 
 const AllRoutes = () => {
   return (
@@ -19,6 +20,8 @@ const AllRoutes = () => {
      
       <Route path="/All Top Wear" element={<All_Top_Wear />} />
       <Route path="/Bed Sheets" element={<Bed_Sheets />} />
+      <Route path="/checkout/address" element={<Address />} />
+      
     </Routes>
   );
 };

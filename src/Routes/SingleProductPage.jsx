@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom/dist";
+import { Link, useParams } from "react-router-dom/dist";
 import "./SingleProductPage.css";
 // import FontAwesomeIcon from "@fortawesome/fontawesome-svg-core";
 
@@ -49,13 +49,15 @@ function SingleProductPage() {
               </span>
               Add to Cart
             </button>
-            <button className="addbtn2">
+           <Link to="/checkout/address">
+           <button  className="addbtn2">
               {" "}
               <span>
                 <FontAwesomeIcon icon="fa-solid fa-angles-right" />
               </span>{" "}
               Buy Now
             </button>
+           </Link> 
           </div>
         </div>
       </div>
