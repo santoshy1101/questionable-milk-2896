@@ -8,20 +8,29 @@ import SingleProductPage from "../Routes/SingleProductPage";
 
 import { singleProductName } from "../All Data/singleProductName";
 import Address from "../Pages/Address";
+import AddToCart from "../Pages/AddToCart";
 
 const AllRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/All Sarees" element={<All_Sarees />} />
-      {singleProductName.map((el, ind) => (
-        <Route key={ind} path={`/${el}/:id`} element={<SingleProductPage />} />
-      ))}
-     
+      
       <Route path="/All Top Wear" element={<All_Top_Wear />} />
       <Route path="/Bed Sheets" element={<Bed_Sheets />} />
       <Route path="/checkout/address" element={<Address />} />
+
+      <Route path="/Add to cart" element={<AddToCart />} />
+
+      {singleProductName.map((el, ind) => (
+        <Route key={ind} path={`/${el}/:id`} element={<SingleProductPage productKey={el} />} />
+      ))}
+      {singleProductName.map((el, ind) => (
+        <Route key={ind} path={`/${el}/:id/Add to cart`} element={<AddToCart productKey={el} />} />
+      ))}
       
+
+     
     </Routes>
   );
 };

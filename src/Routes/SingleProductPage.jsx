@@ -1,18 +1,26 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
-import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom/dist";
+import React, { useState, useEffect, memo } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom/dist";
 import "./SingleProductPage.css";
 // import FontAwesomeIcon from "@fortawesome/fontawesome-svg-core";
 
-function SingleProductPage() {
+function SingleProductPage({ productKey }) {
+  console.log("productKey: ", productKey);
   const { id } = useParams();
 
   const [product, setProduct] = useState({});
+  const [addedCart, setAddedCart] = useState(false);
+  const navigate=useNavigate()
+
+  const handleAddCart = () => {
+    localStorage.setItem("cardAdded", JSON.stringify(product));
+    setAddedCart(true);
+  };
 
   useEffect(() => {
     axios(`https://product-list-api.onrender.com/saree/${id}`).then((res) => {
-      console.log("res: ", res);
+      // console.log("res: ", res);
       // console.log(res.data);
       setProduct(res.data);
     });
@@ -43,21 +51,24 @@ function SingleProductPage() {
           </div>
 
           <div className="flex justify-evenly  name">
-            <button className="addbtn">
-              <span>
-                <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
-              </span>
-              Add to Cart
+            {/* <Link to={"Add to cart"}> */}
+            <button className="addbtn" onClick={handleAddCart}>
+              {addedCart ? (
+                <Link to={"Add to cart"}>Go to Card</Link>
+              ) : (
+                "Add to Cart"
+              )}
             </button>
-           <Link to="/checkout/address">
-           <button  className="addbtn2">
-              {" "}
-              <span>
-                <FontAwesomeIcon icon="fa-solid fa-angles-right" />
-              </span>{" "}
-              Buy Now
-            </button>
-           </Link> 
+            {/* </Link> */}
+            <Link to="/checkout/address">
+              <button className="addbtn2">
+                {" "}
+                <span>
+                  {/* <FontAwesomeIcon icon="fa-solid fa-angles-right" /> */}
+                </span>{" "}
+                Buy Now
+              </button>
+            </Link>
           </div>
         </div>
       </div>
@@ -89,4 +100,4 @@ function SingleProductPage() {
   );
 }
 
-export default SingleProductPage;
+export default memo(SingleProductPage);
