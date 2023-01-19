@@ -43,6 +43,7 @@ const price = [
 ];
 const Home = () => {
   return (
+
     <div>
       <div className="flex mt-7 justify-center">
         <img className="w-[66%]" src={pic1} alt="" />
@@ -143,6 +144,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+
 
 
       <div className="flex mt-7 justify-center">
