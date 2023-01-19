@@ -5,9 +5,9 @@ import { StarIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 //import {AiFillStar} from "react-icons/ai"
 
-const SareeCard = ({
+const ProductCard = ({
   brand,
-  dis_price,
+  price,
   discount,
   id,
   image,
@@ -16,7 +16,7 @@ const SareeCard = ({
 }) => {
   return (
     <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
-      <Link to={`/All Sarees/${id}`}>
+      <Link to={`/All Top Wear/${id}`}>
         <Image src={image} alt="Image" height="350px" width="100%" />
 
         <Box p="6">
@@ -31,7 +31,7 @@ const SareeCard = ({
           </Box>
 
           <Box>
-            {dis_price}
+            {price || og_price}
             <Box as="span" color="gray.600" fontSize="sm">
               {" onwards"}
             </Box>
@@ -58,4 +58,4 @@ const SareeCard = ({
   );
 };
 
-export default SareeCard;
+export default ProductCard;

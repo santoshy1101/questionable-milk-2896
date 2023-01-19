@@ -2,29 +2,42 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
-import TopWearCard from "./TopWearCard";
 import styles from "../TopWear/Styles/TopWearList.module.css";
-import { Link } from "react-router-dom";
+import ProductCard from "../ProductCard";
 
 const TopWearList = () => {
   const [TopWearData, setTopWearData] = useState([]);
+  const [loading,setLoading]=useState(false)
 
   const getTopWearData = () => {
+    setLoading(true)
     axios
       .get("https://product-list-api.onrender.com/topWear")
-      .then((res) => setTopWearData(res.data))
+      .then((res) =>{
+        setTopWearData(res.data)
+        setLoading(false)
+      })
       .catch((err) => console.log(err));
   };
   useEffect(() => {
+   
     getTopWearData();
+   
   }, []);
 
   // console.log(sareeData);
+  if(loading){
+    return (
+      <div style={{marginTop:"100px",fontSize:"40px"}}>
+          <h1>Loading...</h1>
+      </div>
+    )  
+  }
   return (
     <div className={styles.topWearList}>
       {TopWearData &&
         TopWearData.map((ele) => {
-          return <TopWearCard key={ele.id} {...ele} />;
+          return <ProductCard key={ele.id} {...ele} />;
         })}
     </div>
   );
