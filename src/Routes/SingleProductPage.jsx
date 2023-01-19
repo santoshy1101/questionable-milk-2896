@@ -1,7 +1,9 @@
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useState, useEffect, memo } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom/dist";
+import { getproducts } from "../Redux/Product/action";
 import "./SingleProductPage.css";
 // import FontAwesomeIcon from "@fortawesome/fontawesome-svg-core";
 
@@ -11,19 +13,25 @@ function SingleProductPage({ productKey }) {
 
   const [product, setProduct] = useState({});
   const [addedCart, setAddedCart] = useState(false);
-  const navigate=useNavigate()
-
+  const [productCount, setProductCount] = useState(0);
+  const navigate = useNavigate();
+const dispatch=useDispatch()
   const handleAddCart = () => {
+    // if (!productCount) {
+    //   return;
+    // }
+    // alert("Product Added");
     localStorage.setItem("cardAdded", JSON.stringify(product));
     setAddedCart(true);
   };
 
   useEffect(() => {
-    axios(`https://product-list-api.onrender.com/saree/${id}`).then((res) => {
-      // console.log("res: ", res);
-      // console.log(res.data);
-      setProduct(res.data);
-    });
+    // axios(`https://product-list-api.onrender.com/saree/${id}`).then((res) => {
+    //   // console.log("res: ", res);
+    //   // console.log(res.data);
+    //   setProduct(res.data);
+    // });
+   dispatch( getproducts("saree"))
   }, [id]);
   //   console.log("id", id);
   //   console.log("product: ", product);
