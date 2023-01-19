@@ -1,9 +1,12 @@
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
+// import { initial } from "lodash";
 import React, { useState, useEffect, memo } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom/dist";
-import { getproducts } from "../Redux/Product/action";
+import { addSingleCart } from "../Redux/AddSingleData/action";
+import { addtoCartAction } from "../Redux/AddtoCart/action";
+import { getproducts, singleProduct } from "../Redux/Product/action";
 import "./SingleProductPage.css";
 // import FontAwesomeIcon from "@fortawesome/fontawesome-svg-core";
 
@@ -11,17 +14,21 @@ function SingleProductPage({ productKey }) {
   console.log("productKey: ", productKey);
   const { id } = useParams();
 
-  const [product, setProduct] = useState({});
+  // const [product, setProduct] = useState({});
+  const product = useSelector((store) => store.productReducer.product);
+
+  const item = useSelector((store) => store.addtoCartReducer.item);
+  console.log("item: ", item);
   const [addedCart, setAddedCart] = useState(false);
   const [productCount, setProductCount] = useState(0);
   const navigate = useNavigate();
-const dispatch=useDispatch()
+  const dispatch = useDispatch();
+
   const handleAddCart = () => {
-    // if (!productCount) {
-    //   return;
-    // }
     // alert("Product Added");
-    localStorage.setItem("cardAdded", JSON.stringify(product));
+
+    dispatch(addtoCartAction(product));
+
     setAddedCart(true);
   };
 
@@ -31,10 +38,14 @@ const dispatch=useDispatch()
     //   // console.log(res.data);
     //   setProduct(res.data);
     // });
-   dispatch( getproducts("saree"))
+    dispatch(singleProduct("saree", id));
+    //  .then(res=> dispatch(addedCart(res.data)))
   }, [id]);
   //   console.log("id", id);
   //   console.log("product: ", product);
+
+  // console.log("state: ", state);
+
   return (
     <div className="flex mt-5 ml-20 mr-20">
       {/* left side */}

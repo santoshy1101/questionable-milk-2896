@@ -100,7 +100,7 @@ const Navbar = () => {
               <div className="">Profile</div>
             </div>
             <div className="flex flex-col items-center justify-center p-2">
-              <Link to={"Add to cart"}>
+              <Link to={"cart"}>
                 <div>
                   <FiShoppingCart size={20} />
                 </div>

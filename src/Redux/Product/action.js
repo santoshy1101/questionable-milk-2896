@@ -30,3 +30,17 @@ export const getproducts = (productKey) => (dispatch) => {
       dispatch(getproductsFailureAction());
     });
 };
+
+export const singleProduct = (productKey, id) => (dispatch) => {
+  dispatch(getproductsRequestAction());
+
+  axios
+    .get(`https://product-list-api.onrender.com/${productKey}/${id}`)
+    .then((res) => {
+      console.log(res);
+      dispatch(getproductsSuccessAction(res.data));
+    })
+    .catch((err) => {
+      dispatch(getproductsFailureAction());
+    });
+};
