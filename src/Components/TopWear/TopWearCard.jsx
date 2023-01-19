@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const TopWearCard = ({
   brand,
-  dis_price,
+  price,
   discount,
   id,
   image,
@@ -31,7 +31,7 @@ const TopWearCard = ({
           </Box>
 
           <Box>
-            {dis_price}
+            {price}
             <Box as="span" color="gray.600" fontSize="sm">
               {" onwards"}
             </Box>
