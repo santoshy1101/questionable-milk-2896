@@ -1,3 +1,9 @@
+
+
+
+import { Login } from '../Pages/Login';
+import NewAccount from '../Pages/SignUp';
+
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import All_Sarees from "../Pages/All_Sarees";
@@ -10,9 +16,15 @@ import { singleProductName } from "../All Data/singleProductName";
 import Address from "../Pages/Address";
 import AddToCart from "../Pages/AddToCart";
 
+
 const AllRoutes = () => {
   return (
     <Routes>
+
+ 
+    <Route path='/signup' element={<NewAccount/>}></Route>
+    <Route path='/login' element={<Login/>}></Route>
+
       <Route path="/" element={<Home />} />
       <Route path="/All Sarees" element={<All_Sarees />} />
       
@@ -31,6 +43,7 @@ const AllRoutes = () => {
       
 
      
+
     </Routes>
   );
 };
