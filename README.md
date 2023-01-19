@@ -1,10 +1,16 @@
 # questionable-milk-2896
 https://www.meesho.com/
 
-womens_Ethnic [all saree] ,western [top,dresss]-> sakill;
+<h1>make all pages responsive <h1/>
 
-mens [All top wear] , bottom wear [track pants] ->ravi;
+<h3>
+ womens_Ethnic [all saree], home furnishing[] ,[bedsheet,doormet] ,kitchen[kitchen storage] ,western [top,dresss]-> sakill;
+<br/>
+ 
+address & payment page ->ravi;
 
-home furnishing[] ,[bedsheet,doormet] ,kitchen[kitchen storage] ->rahul
+ daynamic product, page admin panel ->rahul
 
-home page -> Mohammad Sahil
+home, page login page -> Mohammad Sahil
+
+navbar , search functionality, all routing through navbar ->Santosh </h3>

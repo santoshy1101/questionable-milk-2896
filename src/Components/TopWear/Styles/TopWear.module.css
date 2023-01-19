@@ -1,0 +1,15 @@
+.mainContainer{
+    display: flex;
+    gap: 5px;
+    margin-top: 20px;
+}
+.sideBar{
+border: 1px solid black;
+width: 20%;
+text-align: center;
+}
+.topWearList{
+    /* border: 1px solid black; */
+    width: 80%;
+    text-align: center;
+}

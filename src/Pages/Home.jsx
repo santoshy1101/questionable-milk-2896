@@ -144,6 +144,7 @@ const Home = () => {
         </div>
       </div>
 
+
       <div className="flex mt-7 justify-center">
         <img className="w-[63%]" src={pic3} alt="" />
       </div>
