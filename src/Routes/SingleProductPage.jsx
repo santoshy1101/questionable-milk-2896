@@ -1,9 +1,9 @@
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useState, useEffect, memo } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom/dist";
-import { getproducts } from "../Redux/Product/action";
+import { getproducts, singleProduct } from "../Redux/Product/action";
 import "./SingleProductPage.css";
 // import FontAwesomeIcon from "@fortawesome/fontawesome-svg-core";
 
@@ -11,11 +11,14 @@ function SingleProductPage({ productKey }) {
   console.log("productKey: ", productKey);
   const { id } = useParams();
 
-  const [product, setProduct] = useState({});
+  // const [product, setProduct] = useState({});
   const [addedCart, setAddedCart] = useState(false);
   const [productCount, setProductCount] = useState(0);
-  const navigate = useNavigate();
-const dispatch=useDispatch()
+
+  const product = useSelector((store) => store.productReducer.product);
+  // console.log(product);
+
+  const dispatch = useDispatch();
   const handleAddCart = () => {
     // if (!productCount) {
     //   return;
@@ -31,7 +34,7 @@ const dispatch=useDispatch()
     //   // console.log(res.data);
     //   setProduct(res.data);
     // });
-   dispatch( getproducts("saree"))
+    dispatch(singleProduct("saree", id));
   }, [id]);
   //   console.log("id", id);
   //   console.log("product: ", product);
