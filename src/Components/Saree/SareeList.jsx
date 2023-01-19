@@ -1,33 +1,56 @@
-import React from 'react'
-import { useState } from 'react'
-import axios from "axios"
-import { useEffect } from 'react'
-import SareeCard from './SareeCard'
-import styles from "../Saree/Styles/SareeList.module.css"
-
+import React from "react";
+import { useState } from "react";
+import axios from "axios";
+import { useEffect } from "react";
+import styles from "../Saree/Styles/SareeList.module.css";
+import ProductCard from "../ProductCard";
+import { useDispatch, useSelector } from "react-redux";
+import { getproducts } from "../../Redux/Product/action";
 
 const SareeList = () => {
-    const [sareeData,setSareeData]=useState([])
-   
-    const getSarrees=()=>{
-        axios.get("https://product-list-api.onrender.com/saree").then((res)=>setSareeData(res.data)).catch((err)=>console.log(err))
-    }
-useEffect(()=>{
-getSarrees()
-},[])
+  const [sareeData, setSareeData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-console.log(sareeData);
+  // use Redux formate
+  // const { loading, sareeData } = useSelector((store) => {
+  //   return {
+  //     sareeData: store.productReducer.product,
+  //     loading: store.productReducer.loading,
+  //   };
+  // });
+  // const dispatch = useDispatch();
+
+  const getSarrees = () => {
+    setLoading(true);
+    axios
+      .get("https://product-list-api.onrender.com/saree")
+      .then((res) => {
+        setSareeData(res.data);
+        setLoading(false);
+      })
+      .catch((err) => console.log(err));
+  };
+  useEffect(() => {
+    getSarrees();
+    // dispatch(getproducts("saree"));      //redux formate
+  }, []);
+
+  console.log(sareeData);
+  if (loading) {
+    return (
+      <div style={{ marginTop: "100px", fontSize: "40px" }}>
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
   return (
     <div className={styles.sareeList}>
-        {
-           
-           sareeData && sareeData.map((ele)=>{
-               return <SareeCard key={ele.id} {...ele}/>
-            })
-            
-        }
+      {sareeData.length > 0 &&
+        sareeData.map((ele) => {
+          return <ProductCard key={ele.id} {...ele} />;
+        })}
     </div>
-  )
-}
+  );
+};
 
-export default SareeList
+export default SareeList;
