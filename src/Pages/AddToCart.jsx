@@ -129,8 +129,9 @@ export default function AddToCart() {
               <p>Order Total </p>
               <p>₹{totalAmount}</p>
             </div>
-
-            <button className="ctn-class">Continue</button>
+            <Link to={"/address"}>
+              <button className="ctn-class">Continue</button>
+            </Link>
             <img
               src="	https://images.meesho.com/images/marketing/1588578650850.webp"
               className="img-class2"
