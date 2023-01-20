@@ -12,7 +12,7 @@ const TopWearList = () => {
   const getTopWearData = () => {
     setLoading(true)
     axios
-      .get("https://product-list-api.onrender.com/topWear")
+      .get("https://meshoo-mock-server-app.onrender.com/alltopwear")
       .then((res) =>{
         setTopWearData(res.data)
         setLoading(false)

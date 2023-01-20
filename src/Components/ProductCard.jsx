@@ -1,15 +1,15 @@
 import React from "react";
-import { Box, Badge } from "@chakra-ui/react";
+import { Box, Badge,Image } from "@chakra-ui/react";
 import { img1 } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 //import {AiFillStar} from "react-icons/ai"
 
-const ProductCard = ({ brand,  discount, id, img1, name, price }) => {
+const ProductCard = ({ rating,  reviews, id, img1, name, price,delivery }) => {
   return (
     <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
       <Link to={`/All Top Wear/${id}`}>
-        <img src={img1} alt="img1" height="350px" width="100%" />
+        <Image src={img1} alt="img1" height="350px" width="100%" />
 
         <Box p="6">
           <Box
@@ -18,18 +18,19 @@ const ProductCard = ({ brand,  discount, id, img1, name, price }) => {
             as="h4"
             lineHeight="tight"
             noOfLines={1}
+            fontSize="xl"
           >
             {name}
           </Box>
 
           <Box>
-            {price || price}
-            <Box as="span" color="gray.600" fontSize="sm">
+            <Box fontSize="xl">{price}  <Box as="span" color="gray.600" fontSize="sm">
               {" onwards"}
-            </Box>
+            </Box> </Box>
+           
             <br />
             <Badge borderRadius="full" px="2" colorScheme="teal">
-              Free Delivery
+              {delivery}
             </Badge>
           </Box>
           <Box width="fit-content" margin="auto">
@@ -37,10 +38,10 @@ const ProductCard = ({ brand,  discount, id, img1, name, price }) => {
               {Array(5)
                 .fill("")
                 .map((_, i) => (
-                  <StarIcon key={i} color={i < 4 ? "teal.500" : "gray.300"} />
+                  <StarIcon key={i} color={i < Math.ceil(rating) ? "blue.500" : "gray.300"} />
                 ))}
               <Box as="span" ml="2" color="gray.600" fontSize="sm">
-                {13} reviews
+                {reviews}
               </Box>
             </Box>
           </Box>
