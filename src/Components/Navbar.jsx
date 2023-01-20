@@ -122,7 +122,7 @@ const {WomenEthnic} =navListData;
 
           {/* first map for all categories under the navbar category one by one */}
           {navCatData.length > 0 && navCatData.map(({category,sub_category},index) => (
-            <ul key={index} className={` ${index%2===0 ? "bg-[#ffffff]" : "bg-[#e5e9f0]" } px-[6px] py-2 rounded-bl-[90px]`}>
+            <ul key={index} className={` ${index%2===0 ? "bg-white" : "bg-[#e5e9f0]" } px-[6px] py-2 rounded-bl-[90px]`}>
               <li className="text-[#F43397] font-[600]   mb-3 ">
                {category}
               </li>

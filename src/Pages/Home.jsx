@@ -41,11 +41,15 @@ const price = [
     name: "3000-4000",
   },
 ];
+
 const Home = () => {
+  const [sortingHover,setsortingHover] =React.useState(false)
+  
+
   return (
 
     <div>
-      <div className="flex mt-7 justify-center">
+      <div className="flex justify-center mt-7">
         <img className="w-[66%]" src={pic1} alt="" />
       </div>
       <div className="flex justify-center align-middle mx-auto w-[70%] ">
@@ -88,9 +92,9 @@ const Home = () => {
         <div className="section245">
           <div className="flex justify-center mx-auto">
             <div className="mt-[22%] mr-3">
-              <Button w={"200px"} m={"auto"} colorScheme={"blackAlpha"}>
+              <div className="px-16 py-3 m-auto text-2xl font-semibold rounded-full bg-slate-200"  >
                 View All
-              </Button>
+              </div>
             </div>
             <div>
               <img
@@ -147,13 +151,13 @@ const Home = () => {
 
 
 
-      <div className="flex mt-7 justify-center">
+      <div className="flex justify-center mt-7">
         <img className="w-[63%]" src={pic3} alt="" />
       </div>
-      <div className="flex mt-7 justify-center">
+      <div className="flex justify-center mt-7">
         <img className="w-[66%]" src={pic2} alt="" />
       </div>
-      <div className="mx-auto">
+      <div className="mx-auto mt-16">
         <Heading>Products For You</Heading>
       </div>
       <div style={{display:"flex"}}>
@@ -162,19 +166,19 @@ const Home = () => {
         <Accordion defaultIndex={[0]} allowMultiple>
           <AccordionItem>
             <h2>
-              <AccordionButton>
-                <Box as="span" textAlign="left">
+              <div onMouseLeave={()=>setsortingHover(false)}  onClick={()=>setsortingHover(!sortingHover)} className={`  hover:bg-slate-400 cursor-pointer flex flex-row px-4 py-1 border gap-x-2 ${sortingHover && "group"} `}>
+                <div >
                   Sort By
-                </Box>
-                <AccordionIcon />
-              </AccordionButton>
+                </div>
+                <div  className="duration-1000 group-hover:-rotate-180"><AccordionIcon /></div>
+              </div>
             </h2>
-            <AccordionPanel pb={4}>
+            <div pb={4}>
               <div className="hover:bg-pink-200">Revelance</div>
               <div className="hover:bg-pink-200">Price: Low to High</div>
               <div className="hover:bg-pink-200">New Arrivals</div>
               <div className="hover:bg-pink-200">Ratings</div>
-            </AccordionPanel>
+            </div>
           </AccordionItem>
         </Accordion>
       </div>
