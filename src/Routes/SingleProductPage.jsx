@@ -72,11 +72,7 @@ function SingleProductPage({ productKey }) {
           <div className="flex justify-evenly  name">
             {/* <Link to={"Add to cart"}> */}
             <button className="addbtn" onClick={handleAddCart}>
-              {addedCart ? (
-                <Link to={"Add to cart"}>Go to Card</Link>
-              ) : (
-                "Add to Cart"
-              )}
+              {addedCart ? "Card Added" : "Add to Cart"}
             </button>
             {/* </Link> */}
             <Link to="/checkout/address">
