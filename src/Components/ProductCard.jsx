@@ -1,23 +1,15 @@
 import React from "react";
 import { Box, Badge } from "@chakra-ui/react";
-import { Image } from "@chakra-ui/react";
+import { img1 } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 //import {AiFillStar} from "react-icons/ai"
 
-const ProductCard = ({
-  brand,
-  price,
-  discount,
-  id,
-  image,
-  name,
-  og_price,
-}) => {
+const ProductCard = ({ brand,  discount, id, img1, name, price }) => {
   return (
     <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
       <Link to={`/All Top Wear/${id}`}>
-        <Image src={image} alt="Image" height="350px" width="100%" />
+        <img src={img1} alt="img1" height="350px" width="100%" />
 
         <Box p="6">
           <Box
@@ -31,7 +23,7 @@ const ProductCard = ({
           </Box>
 
           <Box>
-            {price || og_price}
+            {price || price}
             <Box as="span" color="gray.600" fontSize="sm">
               {" onwards"}
             </Box>

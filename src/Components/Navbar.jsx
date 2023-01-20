@@ -92,11 +92,16 @@ const {WomenEthnic} =navListData;
           <div className=''>Profile</div>
         </div>
         <div className="flex flex-col items-center justify-center p-2">
-          <div>
-            <FiShoppingCart size={20} />
-          </div>
-          <div>Cart</div>
-        </div></div>
+        <Link to="/Add to cart">
+                <div>
+                  <FiShoppingCart size={20} />
+                </div>
+                <div>Cart</div>
+           </Link>
+          
+        </div>
+       
+        </div>
          
         </div>
         

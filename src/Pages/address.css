@@ -1,0 +1,17 @@
+.maindiv{
+   width: 65%;
+   display: flex;
+   margin: auto;
+   margin-top: 50px;
+   justify-content: space-evenly;
+}
+.left{
+    width:60%
+}
+.maindiv2{
+    width: 80%;
+    display: flex;
+    margin: auto;
+    margin-top: 50px;
+    justify-content: space-evenly;
+}
