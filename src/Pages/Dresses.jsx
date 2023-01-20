@@ -6,7 +6,7 @@ import SidebarSaree from '../Components/Saree/SidebarSaree'
 import ProductCard from '../Components/ProductCard'
 import Loading from '../Components/Loader/Loading'
 
-const All_Top_Wear = () => {
+const Dresses = () => {
   const {pathname} = useLocation();
   const [data,setData] = useState([])
   const [loading ,setLoading]= useState(false)
@@ -40,4 +40,4 @@ const All_Top_Wear = () => {
   )
 }
 
-export default All_Top_Wear
+export default Dresses

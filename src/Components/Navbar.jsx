@@ -34,7 +34,12 @@ const {WomenEthnic} =navListData;
        hoverdCat && setNavCatData(navListData[hoverdCat])
   }
 
-  console.log(navCatSelect)
+  const subCategoryClickHandler=(path)=>{
+  setNavCatSelect("")
+  navigate(`/${path}`)
+  }
+
+
   return (
     <div className='sticky top-0 bg-[#ffffff]'>
       <div onMouseEnter={() => setNavCatSelect("")} className="border-b-[1.2px]  flex-col-reverse lg:flex-row  border-gray-400 flex px-8 items-center justify-between">
@@ -119,7 +124,7 @@ const {WomenEthnic} =navListData;
         {/* After hover part of category */}
         <div
         onMouseLeave={(e) => setNavCatSelect("")}
-          className={` flex  w-[95%] ml-[40px] z-[9999] absolute shadow-2xl rounded-br-[20px] bg-[#1dccb7] rounded-bl-[20px] ${
+          className={` flex  w-[95%] ml-[40px] z-[99999] absolute shadow-2xl rounded-br-[20px] bg-[white] rounded-bl-[20px] ${
             navListData[navCatSelect] ?  'block' :'hidden'
           }`}
         >
@@ -127,7 +132,7 @@ const {WomenEthnic} =navListData;
 
           {/* first map for all categories under the navbar category one by one */}
           {navCatData.length > 0 && navCatData.map(({category,sub_category},index) => (
-            <ul key={index} className={` ${index%2===0 ? "bg-white" : "bg-[#e5e9f0]" } px-[6px] py-2 rounded-bl-[90px]`}>
+            <ul key={index} className={` ${index%2===0 ? "bg-white" : "bg-[#e5e9f0]" } px-[6px] py-2 rounded-bl-[30px]`}>
               <li className="text-[#F43397] font-[600]   mb-3 ">
                {category}
               </li>
@@ -135,7 +140,7 @@ const {WomenEthnic} =navListData;
               {/* second map for all sub categories under the after hover categoery */}
                 {
                   sub_category.map((ele,subInd)=>(
-                    <li  className=' hover:bg-slate-400 cursor-pointer text-[15px] px-6 py-[4px] duration-200  rounded-bl-[90px]' onClick={()=>navigate(`/${ele}`)}  key={subInd}>{ele}</li>
+                    <li  className=' hover:bg-slate-400 cursor-pointer text-[15px] px-6 py-[4px] duration-200  rounded-bl-[90px]' onClick={()=>subCategoryClickHandler(ele)}  key={subInd}>{ele}</li>
                   ))
                 }
               </ul>
