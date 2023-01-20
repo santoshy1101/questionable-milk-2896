@@ -38,7 +38,7 @@ function SingleProductPage({ productKey }) {
     //   // console.log(res.data);
     //   setProduct(res.data);
     // });
-    dispatch(singleProduct("saree", id));
+    dispatch(singleProduct("allsarees", id));
     //  .then(res=> dispatch(addedCart(res.data)))
   }, [id]);
   //   console.log("id", id);
@@ -53,7 +53,7 @@ function SingleProductPage({ productKey }) {
         <div>
           <img
             className="w-20 mx-1 border-solid border-2 border-sky-500  rounded"
-            src={product.image}
+            src={product.img1}
             alt=""
           />
         </div>
@@ -64,7 +64,7 @@ function SingleProductPage({ productKey }) {
             <img
               width={"85%"}
               className="mt-1 mb-1 ml-auto mr-auto"
-              src={product.image}
+              src={product.img1}
               alt=""
             />
           </div>

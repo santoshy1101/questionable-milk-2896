@@ -1,49 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import "./AddToCart.css";
 
 export default function AddToCart() {
+  const [totalPrice,setTotalPrice] = useState(0)
+  const item = useSelector((store) => store.addtoCartReducer.item);
+  // console.log("item:23242 ", item);
+
   return (
-    <div
-      style={{ display: "flex", justifyContent: "center", marginTop: "35px" }}
-    >
+    <div className="flex justify-center items-center">
       {/* left side */}
-      <div className="left-side">
-        <h1>Cart |</h1>
+    
+      <br />
+      <div className=" flex flex-col gap-y-4 ">
+      {item.map.length > 0 &&
+        item.map(({ id, img1, price, quantity, name }) => {
+          
+          return (
+            <div className="left-side" key={id}>
 
-        <div className="card-section">
-          <div>
-            <img
-              className="img-class"
-              src="https://images.meesho.com/images/products/175747025/5ugld_400.jpg"
-              alt=""
-            />
-          </div>
+              <div className="card-section">
+                <div>
+                  <img className="img-class" src={img1} alt={name} />
+                </div>
 
-          <div>
-            <p className="name-class">Chinon sarees</p>
+                <div>
+                  <p className="name-class">{name}</p>
 
-            <div className="flex">
-              <p className="size-class">Size: Free size</p>
-              <p>Qty: 2</p>
+                  <div className="flex">
+                    <p className="size-class">Size: Free size</p>
+                    <p>Qty: {quantity}</p>
+                  </div>
+
+                  <p style={{ marginBottom: "18px" }}>{price}</p>
+
+                  <button className="rem-class">REMOVE</button>
+                </div>
+
+                <div>
+                  <button
+                    className="edit-class"
+                    style={{ margin: "10px 10px 10px 114px" }}
+                  >
+                    EDIT
+                  </button>
+                </div>
+              </div>
             </div>
+          );
+        })}
 
-            <p style={{ marginBottom: "18px" }}>$:466</p>
 
-            <button className="rem-class">REMOVE</button>
-          </div>
-
-          <div>
-            <button
-              className="edit-class"
-              style={{ margin: "10px 10px 10px 114px" }}
-            >
-              EDIT
-            </button>
-          </div>
-        </div>
       </div>
+    
+      <div className="vertical"></div>
 
-      <div class="vertical"></div>
       {/* Right side */}
       <div className="right-side">
         <h2 className="price-class">Price Details</h2>

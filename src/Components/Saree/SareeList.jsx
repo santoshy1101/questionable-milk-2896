@@ -23,7 +23,7 @@ const SareeList = () => {
   const getSarrees = () => {
     setLoading(true);
     axios
-      .get("https://product-list-api.onrender.com/saree")
+      .get("https://meshoo-mock-server-app.onrender.com/allsarees")
       .then((res) => {
         setSareeData(res.data);
         setLoading(false);

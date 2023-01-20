@@ -35,7 +35,7 @@ export const singleProduct = (productKey, id) => (dispatch) => {
   dispatch(getproductsRequestAction());
 
   axios
-    .get(`https://product-list-api.onrender.com/${productKey}/${id}`)
+    .get(`https://meshoo-mock-server-app.onrender.com/${productKey}/${id}`)
     .then((res) => {
       console.log(res);
       dispatch(getproductsSuccessAction(res.data));
