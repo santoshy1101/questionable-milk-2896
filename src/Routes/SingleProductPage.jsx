@@ -11,7 +11,9 @@ import "./SingleProductPage.css";
 // import FontAwesomeIcon from "@fortawesome/fontawesome-svg-core";
 
 function SingleProductPage({ productKey }) {
-  console.log("productKey: ", productKey);
+  // console.log("productKey: ", productKey);
+  let newProductkey = productKey.replaceAll(" ", "").toLowerCase();
+  console.log("newProductkey: ", newProductkey);
   const { id } = useParams();
 
   // const [product, setProduct] = useState({});
@@ -49,7 +51,7 @@ function SingleProductPage({ productKey }) {
     //   // console.log(res.data);
     //   setProduct(res.data);
     // });
-    dispatch(singleProduct("allsarees", id));
+    dispatch(singleProduct(newProductkey, id));
     localStorage.setItem("cardAdded", JSON.stringify(product));
 
     //  .then(res=> dispatch(addedCart(res.data)))
@@ -104,8 +106,8 @@ function SingleProductPage({ productKey }) {
       <div>
         <div className="mx-3 py-3 px-5 border-solid border border-sky-rgb(240 240 240)  rounded ">
           <h2 className="heading">{product.name}</h2>
-          <h2 className="font-bold font text-lg mt-2">{product.dis_price}</h2>
-          <p className="rating">Rating</p>
+          <h2 className="font-bold font text-lg mt-2">{product.price}</h2>
+          <p className="rating">{product.rating}</p>
           <p className="delivery">Free Delivery</p>
         </div>
 

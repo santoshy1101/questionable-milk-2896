@@ -47,7 +47,9 @@ const SareeList = () => {
     <div className={styles.sareeList}>
       {sareeData.length > 0 &&
         sareeData.map((ele) => {
-          return <ProductCard key={ele.id} {...ele} />;
+          return (
+            <ProductCard productKey={"All Sarees"} key={ele.id} {...ele} />
+          );
         })}
     </div>
   );

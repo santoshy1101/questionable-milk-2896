@@ -7,37 +7,37 @@ import ProductCard from "../ProductCard";
 
 const TopWearList = () => {
   const [TopWearData, setTopWearData] = useState([]);
-  const [loading,setLoading]=useState(false)
+  const [loading, setLoading] = useState(false);
 
   const getTopWearData = () => {
-    setLoading(true)
+    setLoading(true);
     axios
       .get("https://meshoo-mock-server-app.onrender.com/alltopwear")
-      .then((res) =>{
-        setTopWearData(res.data)
-        setLoading(false)
+      .then((res) => {
+        setTopWearData(res.data);
+        setLoading(false);
       })
       .catch((err) => console.log(err));
   };
   useEffect(() => {
-   
     getTopWearData();
-   
   }, []);
 
   // console.log(sareeData);
-  if(loading){
+  if (loading) {
     return (
-      <div style={{marginTop:"100px",fontSize:"40px"}}>
-          <h1>Loading...</h1>
+      <div style={{ marginTop: "100px", fontSize: "40px" }}>
+        <h1>Loading...</h1>
       </div>
-    )  
+    );
   }
   return (
     <div className={styles.topWearList}>
       {TopWearData &&
         TopWearData.map((ele) => {
-          return <ProductCard key={ele.id} {...ele} />;
+          return (
+            <ProductCard key={ele.id} productKey={"All Top Wear"} {...ele} />
+          );
         })}
     </div>
   );
