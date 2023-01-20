@@ -1,8 +1,11 @@
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
+// import { initial } from "lodash";
 import React, { useState, useEffect, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom/dist";
+import { addSingleCart } from "../Redux/AddSingleData/action";
+import { addtoCartAction } from "../Redux/AddtoCart/action";
 import { getproducts, singleProduct } from "../Redux/Product/action";
 import "./SingleProductPage.css";
 // import FontAwesomeIcon from "@fortawesome/fontawesome-svg-core";
@@ -12,19 +15,20 @@ function SingleProductPage({ productKey }) {
   const { id } = useParams();
 
   // const [product, setProduct] = useState({});
+  const product = useSelector((store) => store.productReducer.product);
+
+  const item = useSelector((store) => store.addtoCartReducer.item);
+  console.log("item: ", item);
   const [addedCart, setAddedCart] = useState(false);
   const [productCount, setProductCount] = useState(0);
-
-  const product = useSelector((store) => store.productReducer.product);
-  // console.log(product);
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const handleAddCart = () => {
-    // if (!productCount) {
-    //   return;
-    // }
     // alert("Product Added");
-    localStorage.setItem("cardAdded", JSON.stringify(product));
+
+    dispatch(addtoCartAction(product));
+
     setAddedCart(true);
   };
 
@@ -35,9 +39,13 @@ function SingleProductPage({ productKey }) {
     //   setProduct(res.data);
     // });
     dispatch(singleProduct("saree", id));
+    //  .then(res=> dispatch(addedCart(res.data)))
   }, [id]);
   //   console.log("id", id);
   //   console.log("product: ", product);
+
+  // console.log("state: ", state);
+
   return (
     <div className="flex mt-5 ml-20 mr-20">
       {/* left side */}
@@ -64,11 +72,7 @@ function SingleProductPage({ productKey }) {
           <div className="flex justify-evenly  name">
             {/* <Link to={"Add to cart"}> */}
             <button className="addbtn" onClick={handleAddCart}>
-              {addedCart ? (
-                <Link to={"Add to cart"}>Go to Card</Link>
-              ) : (
-                "Add to Cart"
-              )}
+              {addedCart ? "Card Added" : "Add to Cart"}
             </button>
             {/* </Link> */}
             <Link to="/checkout/address">

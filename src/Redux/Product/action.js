@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  EDIT_PRODUCTS_SUCCESS,
   GET_PRODUCTS_FAILURE,
   GET_PRODUCTS_REQUEST,
   GET_PRODUCTS_SUCCESS,
@@ -36,6 +37,7 @@ export const singleProduct = (productKey, id) => (dispatch) => {
   axios
     .get(`https://product-list-api.onrender.com/${productKey}/${id}`)
     .then((res) => {
+      console.log(res);
       dispatch(getproductsSuccessAction(res.data));
     })
     .catch((err) => {
