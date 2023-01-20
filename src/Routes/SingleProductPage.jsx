@@ -24,10 +24,21 @@ function SingleProductPage({ productKey }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  let arr = [];
+
   const handleAddCart = () => {
     // alert("Product Added");
-
-    dispatch(addtoCartAction(product));
+    let newProduct = product;
+    if (addedCart) {
+      alert("Product Added");
+      return;
+    }
+    // if (newProduct === product) {
+    //   alert("You Have alerady added");
+    //   return;
+    // }
+    dispatch(addtoCartAction(newProduct));
+    arr.push(newProduct);
 
     setAddedCart(true);
   };
@@ -39,6 +50,8 @@ function SingleProductPage({ productKey }) {
     //   setProduct(res.data);
     // });
     dispatch(singleProduct("allsarees", id));
+    localStorage.setItem("cardAdded", JSON.stringify(product));
+
     //  .then(res=> dispatch(addedCart(res.data)))
   }, [id]);
   //   console.log("id", id);
