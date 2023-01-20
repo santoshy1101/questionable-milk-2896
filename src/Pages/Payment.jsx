@@ -1,6 +1,34 @@
-import { Button, Card, CardBody, CardFooter, CardHeader, Center, Divider, Heading, Image, Stack, StackDivider, Text } from "@chakra-ui/react"
+import { Alert, AlertDescription, AlertIcon, AlertTitle, Box, Button, Card, CardBody, CardFooter, CardHeader, Center, CloseButton, Divider, Heading, Image, Stack, StackDivider, Text, useDisclosure } from "@chakra-ui/react"
 import { useSelector } from "react-redux"
 import './address.css'
+function CompExample() {
+    const {
+      isOpen: isVisible,
+      onClose,
+      onOpen,
+    } = useDisclosure({ defaultIsOpen: false })
+  
+    return isVisible ? (
+      <Alert status='success'>
+        <AlertIcon />
+        <Box>
+          <AlertTitle>Success!</AlertTitle>
+          <AlertDescription>
+            Your Product orderes Successfully
+          </AlertDescription>
+        </Box>
+        <CloseButton
+          alignSelf='flex-start'
+          position='relative'
+          right={-1}
+          top={-1}
+          onClick={onClose}
+        />
+      </Alert>
+    ) : (
+      <Button  variant='solid' colorScheme='pink' onClick={onOpen}>Pay</Button>
+    )
+  }
 const Payment=()=>{
     const product=useSelector((state)=>{
         return state.productReducer.product
@@ -69,9 +97,10 @@ const Payment=()=>{
          Order Total            :{product.dis_price}
         </Text>
     </Stack>
-    <Button onClick={()=>{alert("Ordee Placed Successfull")}} variant='solid' colorScheme='pink'>
+    {/* <Button onClick={()=>{alert("Ordee Placed Successfull")}} variant='solid' colorScheme='pink'>
        Pay
-      </Button>
+      </Button> */}
+      {CompExample()}
   </CardBody>
 </Card>
     </div>
