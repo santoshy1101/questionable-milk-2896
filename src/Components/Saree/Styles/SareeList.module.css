@@ -4,3 +4,12 @@
     gap: 10px;
     padding: 0px 15px;
 }
+
+@media (min-width: 100px) and (max-width:700px ) {
+    .sareeList{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 10px;
+        padding: 0px 15px;
+    }
+  }
