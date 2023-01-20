@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TfiMobile } from "react-icons/tfi";
 import { CiSearch } from "react-icons/ci";
 import { VscAccount } from "react-icons/vsc";
@@ -7,7 +7,8 @@ import { RxCross2 } from "react-icons/rx";
 import logo from "../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { navListData } from "../All Data/navCategoryList";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getTotalActionCart } from "../Redux/AddtoCart/action";
 
 const catList = [
   "Women Ethnic",
@@ -28,7 +29,7 @@ const Navbar = () => {
   const { WomenEthnic } = navListData;
   const navigate = useNavigate();
 
-  const totalItem = useSelector((store) => store.addtoCartReducer.totalItem);
+  const item = useSelector((store) => store.addtoCartReducer.item);
 
   const searchTextClearHandler = () => {
     setSearchText("");
@@ -105,7 +106,7 @@ const Navbar = () => {
             <div className="flex flex-col items-center justify-center p-2">
               <Link to="/Add to cart">
                 <div>
-                  <span>{totalItem}</span>
+                  <span>{item.length}</span>
                   <FiShoppingCart size={20} />
                 </div>
                 <div>Cart</div>
