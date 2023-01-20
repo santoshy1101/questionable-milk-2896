@@ -57,7 +57,9 @@ export const reducer = (state = initialState, action) => {
   if (action.type === GET_TOTAL_CART) {
     let { totalItem, totalAmount } = state.item.reduce(
       (accum, curVal) => {
-        let { price, quantity } = curVal;
+        let price = curVal.price.replace("₹", "");
+        let quantity = curVal.quantity;
+        // let { price, quantity } = curVal;
 
         let updatedTotalAmount = price * quantity;
         accum.totalAmount += updatedTotalAmount;
