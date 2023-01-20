@@ -1,68 +1,50 @@
 import React from "react";
-import { Box, Badge, Image } from "@chakra-ui/react";
+import { Box, Badge } from "@chakra-ui/react";
 import { img1 } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
-//import {AiFillStar} from "react-icons/ai"
+//import {AiFillStar} from "react-icons/ai";
+import {AiFillStar} from "react-icons/ai"
 
-const ProductCard = ({
-  rating,
-  reviews,
-  id,
-  img1,
-  name,
-  price,
-  delivery,
-  productKey,
-}) => {
+const ProductCard = ({  onwards,delivery, rating,reviews, id, img1, name, price }) => {
   return (
-    <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden">
-      <Link to={`/${productKey}/${id}`}>
-        <Image src={img1} alt="img1" height="350px" width="100%" />
+    <div className='group over' >
+      <Link to={`/All Top Wear/${id}`}>
+    <div className='duration-500  border group-hover:shadow-sm group-hover:shadow-slate-500 w-[100%] rounded-3xl  '>
+        {/* <img src={img1} alt="img1" height="350px" width="100%" /> */}
 
-        <Box p="6">
-          <Box
-            mt="1"
-            fontWeight="semibold"
-            as="h4"
-            lineHeight="tight"
-            noOfLines={1}
-            fontSize="xl"
-          >
-            {name}
-          </Box>
+        <div className="h-[250px] ">
+        <img className="w-[100%] rounded-tl-3xl  rounded-tr-3xl h-[100%] bg-cover" src={img1} alt={name} />
+        </div>
+        <div className="px-4 py-4" >
+        <div className="text-md font-semibold text-slate-400">
+        {name}
+        </div>
 
-          <Box>
-            <Box fontSize="xl">
-              {price}{" "}
-              <Box as="span" color="gray.600" fontSize="sm">
-                {" onwards"}
-              </Box>{" "}
-            </Box>
+          <div className="flex flex-col gap-y-2 ">
+  
+              <div className="flex items-end gap-x-2">
+              <div className="text-2xl font-bold">{price}</div>
+              <p className="text-sm font-semibold text-slate-400">{onwards}</p>
 
-            <br />
-            <Badge borderRadius="full" px="2" colorScheme="teal">
-              {delivery}
-            </Badge>
-          </Box>
-          <Box width="fit-content" margin="auto">
-            <Box display="flex" mt="2" alignItems="center">
-              {Array(5)
-                .fill("")
-                .map((_, i) => (
-                  <StarIcon
-                    key={i}
-                    color={i < Math.ceil(rating) ? "blue.500" : "gray.300"}
-                  />
-                ))}
-              <Box as="span" ml="2" color="gray.600" fontSize="sm">
-                {reviews}
-              </Box>
-            </Box>
-          </Box>
-        </Box>
+            </div>
+            <div className=" w-[110px] px-3 my-2 bg-slate-300 text-sm py-1 rounded-lg font-semibold">
+            {delivery}
+            </div>
+            <div className=" flex items-center gap-x-2" >
+            <div className=" gap-x-1 px-2 rounded-2xl text-slate-50 text-lg font-semibold flex bg-green-400 items-center">
+            <p >{rating}</p>
+            <div ><AiFillStar color="white" size={15}/></div>
+            </div>
+            <div className="text-sm font-semibold text-slate-400">{reviews}</div>
+          </div>
+            
+          </div>
+         
+        </div>
+    </div>
       </Link>
-    </Box>
+    </div>
   );
 };
 

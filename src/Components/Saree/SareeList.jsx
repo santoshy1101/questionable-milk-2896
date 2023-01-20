@@ -6,10 +6,12 @@ import styles from "../Saree/Styles/SareeList.module.css";
 import ProductCard from "../ProductCard";
 import { useDispatch, useSelector } from "react-redux";
 import { getproducts } from "../../Redux/Product/action";
+import { useParams } from "react-router-dom";
 
 const SareeList = () => {
   const [sareeData, setSareeData] = useState([]);
   const [loading, setLoading] = useState(false);
+
 
   // use Redux formate
   // const { loading, sareeData } = useSelector((store) => {
@@ -35,7 +37,7 @@ const SareeList = () => {
     // dispatch(getproducts("saree"));      //redux formate
   }, []);
 
-  console.log(sareeData);
+  // console.log(sareeData);
   if (loading) {
     return (
       <div style={{ marginTop: "100px", fontSize: "40px" }}>
@@ -44,7 +46,7 @@ const SareeList = () => {
     );
   }
   return (
-    <div className={styles.sareeList}>
+    <div className="grid grid-cols-3 gap-x-8 gap-y-10">
       {sareeData.length > 0 &&
         sareeData.map((ele) => {
           return (

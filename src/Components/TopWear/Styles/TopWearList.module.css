@@ -1,7 +1,7 @@
 .topWearList{
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    gap: 10px;
+    gap: 80px;
     padding: 0px 15px;
 }
 

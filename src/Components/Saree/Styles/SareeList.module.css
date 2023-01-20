@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 .sareeList{
     display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -13,3 +15,4 @@
         padding: 0px 15px;
     }
   }
+>>>>>>> f86b34c1212cb05ec9223bd9bc7eca7598868ce6
