@@ -29,7 +29,14 @@ const Navbar = () => {
   const { WomenEthnic } = navListData;
   const navigate = useNavigate();
 
-  const item = useSelector((store) => store.addtoCartReducer.item);
+  const { item, totalItem } = useSelector((store) => {
+    return {
+      item: store.addtoCartReducer.item,
+      totalItem: store.addtoCartReducer.totalItem,
+    };
+  });
+
+  const dispatch = useDispatch();
 
   const searchTextClearHandler = () => {
     setSearchText("");
@@ -39,6 +46,9 @@ const Navbar = () => {
     hoverdCat && setNavCatData(navListData[hoverdCat]);
   };
 
+  useEffect(() => {
+    dispatch(getTotalActionCart());
+  }, [item]);
   console.log(navCatSelect);
   return (
     <div className="sticky top-0 bg-[#ffffff]">
@@ -106,7 +116,7 @@ const Navbar = () => {
             <div className="flex flex-col items-center justify-center p-2">
               <Link to="/Add to cart">
                 <div>
-                  <span>{item.length}</span>
+                  <span>{totalItem}</span>
                   <FiShoppingCart size={20} />
                 </div>
                 <div>Cart</div>
