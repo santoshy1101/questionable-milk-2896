@@ -1,6 +1,6 @@
 .left-side {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
 }
 .img-class {
   width: 90px;
@@ -75,8 +75,8 @@
 }
 
 .edit-class {
-  margin-top: -78px;
-  margin-left: 226px;
+  /* margin-top: -78px; */
+  /* margin-left: 226px; */
   margin-right: 20px;
   color: rgb(244 51 151);
   font-weight: 600;
