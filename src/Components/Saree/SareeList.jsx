@@ -49,7 +49,9 @@ const SareeList = () => {
     <div className="grid grid-cols-3 gap-x-8 gap-y-10">
       {sareeData.length > 0 &&
         sareeData.map((ele) => {
-          return <ProductCard key={ele.id} {...ele} />;
+          return (
+            <ProductCard productKey={"All Sarees"} key={ele.id} {...ele} />
+          );
         })}
     </div>
   );

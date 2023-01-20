@@ -21,20 +21,23 @@ const AllRoutes = () => {
       <Route path="/checkout/address" element={<Address />} />
       <Route path="/Add to cart" element={<AddToCart />} />
 
-      {singleProductName.map((el, ind) => (
-        <Route
-          key={ind}
-          path={`/${el}/:id`}
-          element={<SingleProductPage productKey={el} />}
-        />
-      ))}
-      {singleProductName.map((el, ind) => (
+      {singleProductName.map((el, ind) => {
+        console.log("dsfdsffefewfefeew", el);
+        return (
+          <Route
+            key={ind}
+            path={`/${el}/:id`}
+            element={<SingleProductPage productKey={el} />}
+          />
+        );
+      })}
+      {/* {singleProductName.map((el, ind) => (
         <Route
           key={ind}
           path={`/${el}/:id/Add to cart`}
           element={<AddToCart productKey={el} />}
         />
-      ))}
+      ))} */}
     </Routes>
   );
 };
