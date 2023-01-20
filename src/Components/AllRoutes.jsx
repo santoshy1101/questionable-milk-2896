@@ -15,6 +15,7 @@ import SingleProductPage from "../Routes/SingleProductPage";
 import { singleProductName } from "../All Data/singleProductName";
 import Address from "../Pages/Address";
 import AddToCart from "../Pages/AddToCart";
+import Payment from "../Pages/Payment";
 
 
 const AllRoutes = () => {
@@ -31,7 +32,7 @@ const AllRoutes = () => {
       <Route path="/All Top Wear" element={<All_Top_Wear />} />
       <Route path="/Bed Sheets" element={<Bed_Sheets />} />
       <Route path="/checkout/address" element={<Address />} />
-
+      <Route path="/checkout/payment" element={<Payment />} />
       <Route path="/Add to cart" element={<AddToCart />} />
 
       {singleProductName.map((el, ind) => (
