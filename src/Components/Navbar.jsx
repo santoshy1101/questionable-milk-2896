@@ -35,6 +35,7 @@ const Navbar = () => {
       totalItem: store.addtoCartReducer.totalItem,
     };
   });
+
   const dispatch = useDispatch();
 
   const searchTextClearHandler = () => {
