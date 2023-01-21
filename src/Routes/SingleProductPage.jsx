@@ -16,25 +16,50 @@ import "./SingleProductPage.css";
 function SingleProductPage({ productKey }) {
   // console.log("productKey: ", productKey);
   let newProductkey = productKey.replaceAll(" ", "").toLowerCase();
-  console.log("newProductkey: ", newProductkey);
+  // console.log("newProductkey: ", newProductkey);
   const { id } = useParams();
 
   // const [product, setProduct] = useState({});
   const product = useSelector((store) => store.productReducer.product);
 
   const item = useSelector((store) => store.addtoCartReducer.item);
-  console.log("item: ", item);
+  // console.log("item: ", item);
   const [addedCart, setAddedCart] = useState(false);
   const [productCount, setProductCount] = useState(0);
+  const [size, setSize] = useState("");
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const toast = useToast();
 
-  let arr = [];
+  // let arr = [];
 
   const handleAddCart = () => {
     // alert("Product Added");
     let newProduct = product;
+    if (size) {
+      let updateProduct = { ...newProduct, size };
+      axios
+        .post(
+          "https://meshoo-mock-server-app.onrender.com/addtocartdata",
+          updateProduct
+        )
+        .then((res) => {
+          // console.log("res455666768888", res);
+          dispatch(addtoCartAction(res.data));
+        });
+      setSize("");
+
+      // arr.push(newProduct);
+
+      setAddedCart(true);
+
+      alert("product added in cart");
+      return;
+    } else {
+      alert("please select the size");
+      return;
+    }
     if (addedCart) {
       toast({
         title: "Account created.",
@@ -47,32 +72,45 @@ function SingleProductPage({ productKey }) {
 
       return;
     }
-    // if (newProduct === product) {
-    //   alert("You Have alerady added");
-    //   return;
-    // }
-    dispatch(addtoCartAction(newProduct));
-    arr.push(newProduct);
+    // if (size == "") {
+    //   // toast({
+    //   //   title: "Account created.",
+    //   //   description: "Please select the size",
+    //   //   status: "success",
+    //   //   duration: 1500,
+    //   //   isClosable: true,
+    //   //   position: "top",
+    //   // });
+    //   // return;
 
-    setAddedCart(true);
+    //   return;
+    // } else {
+
+    // }
+  };
+  // console.log("size1213", size);
+
+  const handleSize = (e) => {
+    // console.log("handleSIze");
+    let newSize = e.target.innerText;
+    setSize(newSize);
   };
 
   useEffect(() => {
-    // axios(`https://product-list-api.onrender.com/saree/${id}`).then((res) => {
-    //   // console.log("res: ", res);
-    //   // console.log(res.data);
-    //   setProduct(res.data);
-    // });
     dispatch(singleProduct(newProductkey, id));
     localStorage.setItem("cardAdded", JSON.stringify(product));
 
-    //  .then(res=> dispatch(addedCart(res.data)))
+    setSize(product.size);
+    // return () => {
+    //   return dispatch(singleProduct(newProductkey, id));
+    // };
   }, [id]);
-  //   console.log("id", id);
-  //   console.log("product: ", product);
+  // console.log("size", size);
+  // console.log("product: ", product);
 
   // console.log("state: ", state);
-  console.log("product size", product.size);
+  // console.log("product rmcfomrcosize", product.size ?"working" :"notworking");
+
   return (
     <div>
       <div className="flex mt-5 ml-20 mr-20">
@@ -137,13 +175,21 @@ function SingleProductPage({ productKey }) {
 
           <div className="mx-3 py-3 px-5 border-solid border border-sky-rgb(240 240 240)  rounded my-3 ">
             <h2 className="font-bold my-3">Select Size</h2>
-            <p className="border border-solid border-sky-rgb(244 51 151) rounded my-1 ">
-              {/* {product.size.length > 0 &&
+            <div className="flex gap-x-5">
+              {product.size &&
                 product.size.map((el, index) => {
-                  return <button key={index}>{el}</button>;
-                })} */}
-              {product.delivery}
-            </p>
+                  return (
+                    <button
+                      onClick={(e) => handleSize(e)}
+                      className="border px-4 text-lg font-semibold rounded-2xl hover:text-[#F43397] 
+      hover:border-[#F43397] duration-200 text-slate-800"
+                      key={index}
+                    >
+                      {el}
+                    </button>
+                  );
+                })}
+            </div>
           </div>
 
           <div className="mx-3 py-3 px-5 border-solid border border-sky-rgb(240 240 240)  rounded my-3">

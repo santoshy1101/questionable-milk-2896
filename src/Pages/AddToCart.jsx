@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./AddToCart.css";
 import {
+  addtoCartAction,
   decrementActionCart,
   getTotalActionCart,
   increamentActionCart,
   removeActionCart,
 } from "../Redux/AddtoCart/action";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function AddToCart() {
   const [totalPrice, setTotalPrice] = useState(0);
@@ -18,10 +20,23 @@ export default function AddToCart() {
       totalItem: store.addtoCartReducer.totalItem,
     };
   });
-  // console.log("item:23242 ", item);
-  console.log("totalAmount: ", totalAmount);
+  console.log("item:23242 ", item);
+  // console.log("totalAmount: ", totalAmount);
 
   const dispatch = useDispatch();
+
+  // const getData = () => {
+  //   axios
+  //     .get("https://meshoo-mock-server-app.onrender.com/addtocartdata")
+  //     .then((res) => {
+  //       console.log("addtocartdata", res);
+  //       // dispatch(addtoCartAction(res));
+  //     });
+  // };
+
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
   useEffect(() => {
     dispatch(getTotalActionCart());
