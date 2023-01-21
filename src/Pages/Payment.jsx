@@ -1,12 +1,14 @@
 import { Alert, AlertDescription, AlertIcon, AlertTitle, Box, Button, Card, CardBody, CardFooter, CardHeader, Center, CloseButton, Divider, Heading, Image, Stack, StackDivider, Text, useDisclosure } from "@chakra-ui/react"
+import { useState } from "react"
 import { useSelector } from "react-redux"
-import './address.css'
+import './AddAddress/address.css'
 function CompExample() {
     const {
       isOpen: isVisible,
       onClose,
       onOpen,
     } = useDisclosure({ defaultIsOpen: false })
+    
   
     return isVisible ? (
       <Alert status='success'>
@@ -31,13 +33,18 @@ function CompExample() {
   }
 const Payment=()=>{
     const product=useSelector((state)=>{
-        return state.productReducer.product
+        return state.addtoCartReducer.item
     })
-    console.log(product)
+
+    var toatalPrice=useSelector((state)=>{
+      return state.addtoCartReducer.totalAmount
+  })
     return <div className="maindiv2">
    
     <div>
-    <Card margin="10px"
+    {product.length>0 && product.map((e)=>{
+      
+      return <Card key={e.id} margin="10px"
   direction={{ base: 'column', sm: 'row' }}
   overflow='hidden'
   variant='outline'
@@ -45,7 +52,7 @@ const Payment=()=>{
   <Image
     objectFit='cover'
     maxW={{ base: '100%', sm: '200px' }}
-    src={product.image}
+    src={e.img1}
     alt='produc image'
   />
 
@@ -54,10 +61,10 @@ const Payment=()=>{
       <Heading size='md'>{product.brand}</Heading>
 
       <Text py='2'>
-        {product.name}
+        {e.name}
       </Text>
      <Text>Size: Free Size Qty: 1</Text>
-     <Text> {product.dis_price}</Text>
+     <Text> {e.price}</Text>
      
     
     </CardBody>
@@ -74,6 +81,8 @@ const Payment=()=>{
   </Stack>
   
 </Card>
+    })}
+    
 <Divider orientation='horizontal' />
 <Text>Supplier : AlexVyan Brothers Pvt Ltd        Free Delivery</Text>
 <Divider orientation='horizontal' />
@@ -91,10 +100,10 @@ const Payment=()=>{
   <CardBody>
     <Stack divider={<StackDivider />} spacing='4'>
     <Text size='xs' textTransform='uppercase'>
-         Total Product Price    :{product.dis_price}    
+         Total Product Price    :{toatalPrice}    
         </Text>
         <Text size='xs' textTransform='uppercase'>
-         Order Total            :{product.dis_price}
+         Order Total            :{toatalPrice}
         </Text>
     </Stack>
     {/* <Button onClick={()=>{alert("Ordee Placed Successfull")}} variant='solid' colorScheme='pink'>

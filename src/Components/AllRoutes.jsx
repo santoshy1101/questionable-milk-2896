@@ -8,6 +8,7 @@ import Address from "../Pages/AddAddress/Address";
 import AddToCart from "../Pages/AddToCart";
 import NewAccount from "../Pages/SignUp";
 import ProductsList from "../Pages/ProductsList";
+import Payment from "../Pages/Payment";
 
 const AllRoutes = () => {
   return (
@@ -39,6 +40,7 @@ const AllRoutes = () => {
         element={<ProductsList productKey={"Dresses"} path={"Dresses"} />}
       />
       <Route path="/address" element={<Address />} />
+      <Route path="/payment" element={<Payment />} />
       <Route path="/Add to cart" element={<AddToCart />} />
 
       {singleProductName.map((el, ind) => {
