@@ -102,8 +102,8 @@ function SingleProductPage({ productKey }) {
               {addedCart ? "Card Added" : "Add to Cart"}
             </button>
             {/* </Link> */}
-            <Link to="/checkout/address">
-              <button className="addbtn2">
+            <Link to="/address">
+              <button onClick={handleAddCart} className="addbtn2">
                 {" "}
                 <span>
                   {/* <FontAwesomeIcon icon="fa-solid fa-angles-right" /> */}
