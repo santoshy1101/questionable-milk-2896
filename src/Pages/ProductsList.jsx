@@ -16,7 +16,7 @@ const ProductsList = (prop) => {
   let initState = searchParams.get('page')
   const [page, setPage]=useState(parseInt(initState)   || 1);
   const loc = useLocation();
-console.log(loc);
+// console.log(loc);
   const getProducts = async (arg=1) => {
     // let newaPath =pathname.split("").filter((el)=> el!=="/" && el!== "%" && el!=="2" && el!=="0").join("").toLocaleLowerCase()
     let newPath = path.replaceAll(' ', '').toLowerCase()

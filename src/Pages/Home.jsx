@@ -12,6 +12,7 @@ import pic2 from "../assets/supplier.png";
 import pic3 from "../assets/buisnesswithZero.png";
 import Footer from "../Components/Footer";
 import "./Home.css";
+import { useSelector } from "react-redux";
 const categoery = [
   {
     name: "Men top wear",
@@ -44,8 +45,6 @@ const price = [
 
 const Home = () => {
   const [sortingHover,setsortingHover] =React.useState(false)
-  
-
   return (
 
     <div>

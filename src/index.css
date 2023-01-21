@@ -3,12 +3,21 @@
 @tailwind utilities;
 
 @layer components{
+    
    
     .navlist_category_after_hover{
        color: #F43397;
        border-bottom: 2px solid #F43397;
        cursor: pointer;
        
+      }
+      .address_input{
+        border-bottom:2px solid #F43397;
+        width: 100%;
+        outline: none;
+        font-size: large;
+    
+
       }
       @media only screen and (min-width: 1024px) {
         .sm_logo {

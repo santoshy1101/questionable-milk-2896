@@ -4,7 +4,7 @@ import Home from "../Pages/Home";
 import SingleProductPage from "../Routes/SingleProductPage";
 
 import { singleProductName } from "../All Data/singleProductName";
-import Address from "../Pages/Address";
+import Address from "../Pages/AddAddress/Address";
 import AddToCart from "../Pages/AddToCart";
 import NewAccount from "../Pages/SignUp";
 import ProductsList from "../Pages/ProductsList";
@@ -28,7 +28,7 @@ const AllRoutes = () => {
       <Route path="/Add to cart" element={<AddToCart />} />
 
       {singleProductName.map((el, ind) => {
-        console.log("dsfdsffefewfefeew", el);
+        // console.log("dsfdsffefewfefeew", el);
         return (
           <Route
             key={ind}
