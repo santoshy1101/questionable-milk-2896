@@ -15,15 +15,29 @@ const AllRoutes = () => {
       <Route path="/" element={<Home />} />
       <Route
         path="/All Sarees"
-        element={<ProductsList path={"All Sarees"} p={1} />}
+        element={
+          <ProductsList productKey={"All Sarees"} path={"All Sarees"} p={1} />
+        }
       />
       <Route path="/signup" element={<NewAccount />} />
       <Route
         path="/All Top Wear"
-        element={<ProductsList path={"All Top Wear"} p={1} />}
+        element={
+          <ProductsList
+            productKey={"All Top Wear"}
+            path={"All Top Wear"}
+            p={1}
+          />
+        }
       />
-      <Route path="/BedSheets" element={<ProductsList path={"BedSheets"} />} />
-      <Route path="/Dresses" element={<ProductsList path={"Dresses"} />} />
+      <Route
+        path="/BedSheets"
+        element={<ProductsList productKey={"BedSheets"} path={"BedSheets"} />}
+      />
+      <Route
+        path="/Dresses"
+        element={<ProductsList productKey={"Dresses"} path={"Dresses"} />}
+      />
       <Route path="/address" element={<Address />} />
       <Route path="/Add to cart" element={<AddToCart />} />
 
