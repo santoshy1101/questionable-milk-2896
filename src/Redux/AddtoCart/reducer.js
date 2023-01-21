@@ -28,7 +28,7 @@ export const reducer = (state = initialState, action) => {
   }
 
   if (action.type === CLEAR_ITEM_CART) {
-    return { ...state, item: [] };
+    return { initialState };
   }
 
   if (action.type === INCREMENT_ITEM_CART) {

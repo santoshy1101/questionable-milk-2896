@@ -24,7 +24,7 @@ const Address=()=>{
   };
 
   const handleChange = (e) => {
-    e.targ
+  
     dispatch(handleAddress(e))
   };
     return (
@@ -79,8 +79,11 @@ const Address=()=>{
         </div>
       </div>
       </div>
+      <Link to="/payment">
       <button type="submit" className=" bg-[#F43397] hover:shadow-md text-2xl py-2 rounded-xl text-slate-50">Save Address & Continue</button>
-      
+      </Link>
+     
+    
       </div>
       </form>
       </div>
