@@ -1,9 +1,11 @@
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 // import { initial } from "lodash";
 import React, { useState, useEffect, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom/dist";
+import ProductsList from "../Pages/ProductsList";
 import { addSingleCart } from "../Redux/AddSingleData/action";
 import { addtoCartAction } from "../Redux/AddtoCart/action";
 import { getproducts, singleProduct } from "../Redux/Product/action";
@@ -25,6 +27,7 @@ function SingleProductPage({ productKey }) {
   const [productCount, setProductCount] = useState(0);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const toast = useToast()
 
   let arr = [];
 
@@ -32,7 +35,15 @@ function SingleProductPage({ productKey }) {
     // alert("Product Added");
     let newProduct = product;
     if (addedCart) {
-      alert("Product Added");
+      toast({
+        title: 'Account created.',
+        description: "This Product Already Add In Cart",
+        status: 'success',
+        duration: 1500,
+        isClosable: true,
+        position: 'top',
+      })
+    
       return;
     }
     // if (newProduct === product) {
@@ -62,6 +73,7 @@ function SingleProductPage({ productKey }) {
   // console.log("state: ", state);
 
   return (
+    <div>
     <div className="flex mt-5 ml-20 mr-20">
       {/* left side */}
       <div className="flex">
@@ -126,6 +138,8 @@ function SingleProductPage({ productKey }) {
           <p> Country of Origin : India</p>
         </div>
       </div>
+    </div>
+    {/* <ProductsList path={"BedSheets"} /> */}
     </div>
   );
 }

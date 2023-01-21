@@ -35,6 +35,7 @@ const Navbar = () => {
       totalItem: store.addtoCartReducer.totalItem,
     };
   });
+ 
 
   const dispatch = useDispatch();
 
@@ -118,9 +119,9 @@ const Navbar = () => {
               </div>
               <div className="">Profile</div>
             </div>
-            <div className="flex flex-col items-center justify-center p-2">
+            <div className=" flex flex-col items-center justify-center p-2">
               <Link to="/Add to cart">
-                {totalItem}
+               <div className={` ${totalItem > 0 ? "block" :"hidden"} px-2 text-lg font-semibold bg-[#F43397] rounded-full  text-slate-50`}>{totalItem}</div>
                 <div>
                   <FiShoppingCart size={20} />
                 </div>
