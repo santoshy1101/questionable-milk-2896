@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-
     "@chakra-ui/icons": "^2.0.16",
     "@chakra-ui/layout": "^2.1.15",
     "@chakra-ui/react": "^2.4.9",
@@ -30,6 +29,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "json": "json-server --watch db.json --port 8080",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
