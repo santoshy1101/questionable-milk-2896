@@ -2,14 +2,20 @@ import React from "react";
 import { Box, Badge } from "@chakra-ui/react";
 import { img1 } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 //import {AiFillStar} from "react-icons/ai";
 import {AiFillStar} from "react-icons/ai"
 
 const ProductCard = ({  onwards,delivery, rating,reviews, id, img1, name, price }) => {
+
+  const {pathname} = useLocation()
+      let newaPath =pathname.split("").filter((el)=> el!=="/" && el!== "%" && el!=="2" && el!=="0").join("")
+      console.log("location",newaPath)
+      
+
   return (
     <div className='group over' >
-      <Link to={`/All Top Wear/${id}`}>
+      <Link to={`/${newaPath}/${id}`}>
     <div className='duration-500  border group-hover:shadow-sm group-hover:shadow-slate-500 w-[100%] rounded-3xl  '>
         {/* <img src={img1} alt="img1" height="350px" width="100%" /> */}
 

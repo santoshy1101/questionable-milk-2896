@@ -5,6 +5,7 @@ import axios from "axios";
 import React, { useState, useEffect, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom/dist";
+import ProductsListForSinglePage from "../Components/ProductsListForSinglePage";
 import ProductsList from "../Pages/ProductsList";
 import { addSingleCart } from "../Redux/AddSingleData/action";
 import { addtoCartAction } from "../Redux/AddtoCart/action";
@@ -139,7 +140,7 @@ function SingleProductPage({ productKey }) {
         </div>
       </div>
     </div>
-    {/* <ProductsList path={"BedSheets"} /> */}
+     <ProductsListForSinglePage path={"BedSheets"} /> 
     </div>
   );
 }

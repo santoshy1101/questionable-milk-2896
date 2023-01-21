@@ -14,16 +14,16 @@ const AllRoutes = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route
-        path="/All Sarees"
-        element={<ProductsList path={"All Sarees"} p={1} />}
+        path="/allsarees"
+        element={<ProductsList path={"allsarees"} p={1} />}
       />
       <Route path="/signup" element={<NewAccount />} />
       <Route
-        path="/All Top Wear"
-        element={<ProductsList path={"All Top Wear"} p={1} />}
+        path="/alltopwear"
+        element={<ProductsList path={"alltopwear"} p={1} />}
       />
-      <Route path="/BedSheets" element={<ProductsList path={"BedSheets"} />} />
-      <Route path="/Dresses" element={<ProductsList path={"Dresses"} />} />
+      <Route path="/bedsheets" element={<ProductsList path={"bedsheets"} />} />
+      <Route path="/dresses" element={<ProductsList path={"dresses"} />} />
       <Route path="/address" element={<Address />} />
       <Route path="/Add to cart" element={<AddToCart />} />
 
