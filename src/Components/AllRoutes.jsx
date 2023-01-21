@@ -9,6 +9,7 @@ import AddToCart from "../Pages/AddToCart";
 import NewAccount from "../Pages/SignUp";
 import ProductsList from "../Pages/ProductsList";
 import Payment from "../Pages/Payment";
+import { Login } from "../Pages/Login";
 
 const AllRoutes = () => {
   return (
@@ -26,6 +27,7 @@ const AllRoutes = () => {
       <Route path="/BedSheets" element={<ProductsList path={"BedSheets"} />} />
       <Route path="/Dresses" element={<ProductsList path={"Dresses"} />} />
       <Route path="/address" element={<Address />} />
+      <Route path="/login" element={<Login/>}></Route>
       <Route path="/payment" element={<Payment />} />
       <Route path="/Add to cart" element={<AddToCart />} />
 
