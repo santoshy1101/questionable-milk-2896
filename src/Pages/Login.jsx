@@ -16,7 +16,7 @@ import "./newaccount.css";
 import { useState } from "react";
 import { useContext } from "react";
 
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 export const Login = () => {
   let Login = {};
@@ -26,57 +26,65 @@ export const Login = () => {
   });
   const [load, setLoad] = useState(false);
   const toast = useToast();
-
+  const navigate = useNavigate();
   let nam, val;
   const handleInputChange = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
+    // console.log(e.target.value);
 
     nam = e.target.name;
     val = e.target.value;
     setUser({ ...user, [nam]: val });
   };
 
+  let sighup = JSON.parse(localStorage.getItem("dataSignup"));
   const handleClic = () => {
-    setLoad(true);
-    setTimeout(() => {
-      let flag = false;
-      let loginData = JSON.parse(localStorage.getItem("dataSignup"));
-      for (let i = 0; i < loginData.length; i++) {
-        if (
-          loginData[i].email == user.email &&
-          loginData[i].password == user.password
-        ) {
-          flag = true;
-          let name = loginData[i].name;
-          Login = {
-            name,
-          };
-          localStorage.setItem("dataLogin", JSON.stringify(Login));
+    if (sighup) {
+      setLoad(true);
+      setTimeout(() => {
+        let flag = false;
+        let loginData = JSON.parse(localStorage.getItem("dataSignup"));
+        for (let i = 0; i < loginData.length; i++) {
+          if (
+            loginData[i].email == user.email &&
+            loginData[i].password == user.password
+          ) {
+            flag = true;
+            let name = loginData[i].name;
+            Login = {
+              name,
+              isAuth: true,
+            };
+            localStorage.setItem("dataLogin", JSON.stringify(Login));
+          }
         }
-      }
-      if (flag) {
-        setLoad(false);
+        if (flag) {
+          setLoad(false);
 
-        toast({
-          title: "Login Succesful.",
+          toast({
+            title: "Login Succesful.",
 
-          status: "success",
-          duration: 4000,
-          isClosable: true,
-        });
-      } else {
-        setLoad(false);
-        toast({
-          title: "Wrong Credentials.",
+            status: "success",
+            duration: 4000,
+            isClosable: true,
+          });
+          navigate("/");
+        } else {
+          setLoad(false);
+          toast({
+            title: "Wrong Credentials.",
 
-          position: "top",
-          status: "error",
-          duration: 4000,
-          isClosable: true,
-        });
-      }
-    }, 1000);
+            position: "top",
+            status: "error",
+            duration: 4000,
+            isClosable: true,
+          });
+        }
+      }, 1000);
+    } else {
+      alert("First you need to sign up");
+      navigate("/signup");
+    }
   };
 
   let data = JSON.parse(localStorage.getItem("dataLogin"));

@@ -24,6 +24,7 @@ export default function NewAccount() {
     name: "",
     email: "",
     password: "",
+    isAuth: false,
   });
   let nam, val;
   const handleInputChange = (e) => {
