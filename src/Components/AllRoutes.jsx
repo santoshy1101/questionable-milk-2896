@@ -1,16 +1,16 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import Home from '../Pages/Home/Home'
-import SingleProductPage from '../Routes/SingleProductPage'
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Home from "../Pages/Home/Home";
+import SingleProductPage from "../Routes/SingleProductPage";
 
-import { singleProductName } from '../All Data/singleProductName'
-import Address from '../Pages/AddAddress/Address'
-import AddToCart from '../Pages/AddToCart'
-import NewAccount from '../Pages/SignUp'
-import ProductsList from '../Pages/ProductsList'
+import { singleProductName } from "../All Data/singleProductName";
+import Address from "../Pages/AddAddress/Address";
+import AddToCart from "../Pages/AddToCart";
+import NewAccount from "../Pages/SignUp";
+import ProductsList from "../Pages/ProductsList";
 
-import Payment from '../Pages/Payment'
-import { Login } from '../Pages/Login'
+import Payment from "../Pages/Payment";
+import { Login } from "../Pages/Login";
 
 const AllRoutes = () => {
   return (
@@ -18,16 +18,26 @@ const AllRoutes = () => {
       <Route path="/" element={<Home />} />
       <Route
         path="/allsarees"
-        element={<ProductsList path={'allsarees'} p={1} />}
+        element={
+          <ProductsList productKey={"All Sarees"} path={"allsarees"} p={1} />
+        }
       />
       <Route path="/signup" element={<NewAccount />} />
       <Route
         path="/alltopwear"
-        element={<ProductsList path={'alltopwear'} p={1} />}
+        element={
+          <ProductsList productKey={"alltopwear"} path={"All Top Wear"} p={1} />
+        }
       />
-      <Route path="/bedsheets" element={<ProductsList path={'bedsheets'} />} />
-      <Route path="/dresses" element={<ProductsList path={'dresses'} />} />
-      <Route path="/address" element={<Address />} />
+      <Route
+        path="/bedsheets"
+        element={<ProductsList productKey={"bedsheets"} path={"bedsheets"} />}
+      />
+      <Route
+        path="/dresses"
+        element={<ProductsList productKey={"dresses"} path={"dresses"} />}
+      />
+      <Route path="/checkout/address" element={<Address />} />
 
       <Route path="/login" element={<Login />}></Route>
       <Route path="/payment" element={<Payment />} />
@@ -42,7 +52,7 @@ const AllRoutes = () => {
             path={`/${el}/:id`}
             element={<SingleProductPage productKey={el} />}
           />
-        )
+        );
       })}
       {/* {singleProductName.map((el, ind) => (
         <Route
@@ -52,7 +62,7 @@ const AllRoutes = () => {
         />
       ))} */}
     </Routes>
-  )
-}
+  );
+};
 
-export default AllRoutes
+export default AllRoutes;

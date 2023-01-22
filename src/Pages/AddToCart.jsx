@@ -40,18 +40,19 @@ export default function AddToCart() {
   //   axios.post("http://localhost:8080/posts", newProduct);
   // };
 
-  // const getData = () => {
-  //   axios
-  //     .get("https://meshoo-mock-server-app.onrender.com/addtocartdata")
-  //     .then((res) => {
-  //       console.log("addtocartdata", res);
-  //       // dispatch(addtoCartAction(res));
-  //     });
-  // };
+  const getData = () => {
+    axios
+      .get("https://meshoo-mock-server-app.onrender.com/addtocartdata")
+      .then((res) => {
+        console.log("addtocartdata", res.data.splice(0, 1));
+        console.log("res.data: ", res.data);
+        // dispatch(addtoCartAction(res.data));
+      });
+  };
 
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+  useEffect(() => {
+    getData();
+  }, []);
 
   useEffect(() => {
     // getData();
@@ -167,7 +168,7 @@ export default function AddToCart() {
               <p>Order Total </p>
               <p>₹{totalAmount}</p>
             </div>
-            <Link to={"/address"}>
+            <Link to={"/checkout/address"}>
               <button className="ctn-class">Continue</button>
             </Link>
             <img
