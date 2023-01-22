@@ -21,13 +21,13 @@ const ProductCard = ({
 
   return (
     <div className="group over">
-      <Link to={`/${productKey}/${id}`}>
+      <Link to={`/${productKey || "All Sarees"}/${id}`}>
         <div className="duration-500  border group-hover:shadow-sm group-hover:shadow-slate-500 w-[100%] rounded-3xl  ">
           {/* <img src={img1} alt="img1" height="350px" width="100%" /> */}
 
           <div className="h-[250px] ">
             <img
-              className="w-[100%] rounded-tl-3xl  rounded-tr-3xl h-[100%] bg-cover"
+              className="w-[100%] rounded-tl-3xl  rounded-tr-3xl h-[100%] object-cover"
               src={img1}
               alt={name}
             />

@@ -92,6 +92,8 @@ const AllRoutes = () => {
           element={<AddToCart productKey={el} />}
         />
       ))} */}
+      <Route path="*" element={< ProductsList/>} />
+
     </Routes>
   );
 };

@@ -10,11 +10,20 @@ import React from "react";
 import pic1 from "../../assets/pic1.png";
 import pic2 from "../../assets/supplier.png";
 import pic3 from "../../assets/buisnesswithZero.png";
-import Footer from "../../Components/Footer";
+import Footer from "../../Components/Footer/Footer";
 import "./Home.css";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
+import Filter from "../../Components/Filter";
+import ProductsListForSinglePage from "../../Components/ProductsListForSinglePage";
+import ProductCard from "../../Components/ProductCard";
+import axios from "axios";
+import ProductsList from "../ProductsList";
+import { Link } from "react-router-dom";
+import Accordion1 from "../../Components/Accordion1";
+
+
 const categoery = [
   {
     name: "Men top wear",
@@ -58,45 +67,88 @@ const Home = () => {
   }, []);
   // console.log("name :", name);
 
+  // useEffect(()=>{
+  //   axios
+  //   .get(
+  //     `https://meshoo-mock-server-app.onrender.com/allsaree`,
+  //   )
+  //   .then((res) => {
+
+  //     console.log(res.data);
+  //     // setLoading(false)
+  //     // setData(res.data)
+  //   })
+  //   .catch((err) => {
+  //     console.log(err)
+  //     // setLoading(false)
+  //   })
+
+  
+  // },[])
+
+  const filtByRating=(item)=>{
+   
+    item= +item
+    // console.log("item",typeof(item))
+    // setFilt(item)
+    if(item){
+      let newData = data.filter((el)=>{
+       return el.rating>=item
+      }) ;
+      // console.log(newData);
+    setFilt(newData)
+    }
+    else{
+      setFilt(data)
+    }
+  }
+
   return (
     <div>
       {/* <p>Name :{name}</p> */}
+      <div className=" lg:block hidden">
       <div className="flex justify-center mt-7">
         <img className="w-[66%]" src={pic1} alt="" />
       </div>
       <div className="flex justify-center align-middle mx-auto w-[70%] ">
         <div className="section123">
           <div className="flex justify-center mx-auto">
-            <img
-              style={{
-                objectFit: "contain",
-                height: "320px",
-                padding: "1rem",
-                marginTop: "6rem",
-              }}
-              src="https://images.meesho.com/images/marketing/1649760442043.webp"
-              alt=""
-            />
-            <img
-              style={{
-                objectFit: "contain",
-                height: "280px",
-                padding: "1rem",
-                marginTop: "8rem",
-              }}
-              src="https://images.meesho.com/images/marketing/1649760423313.webp"
-              alt=""
-            />
-            <img
-              style={{
-                objectFit: "contain",
-                height: "280px",
-                padding: "1rem",
-                marginTop: "8rem",
-              }}
-              src="https://images.meesho.com/images/marketing/1649759799809.webp"
-              alt=""
-            />
+           <Link to="allsarees" className="cursor-pointer">
+           <img
+           style={{
+             objectFit: "contain",
+             height: "320px",
+             padding: "1rem",
+             marginTop: "6rem",
+           }}
+           src="https://images.meesho.com/images/marketing/1649760442043.webp"
+           alt=""
+         />
+           </Link>
+           <Link to="/alltopwear">
+           <img
+           style={{
+             objectFit: "contain",
+             height: "280px",
+             padding: "1rem",
+             marginTop: "8rem",
+           }}
+           src="https://images.meesho.com/images/marketing/1649760423313.webp"
+           alt=""
+         />
+           </Link>
+           <Link to="/dresses">
+           <img
+           style={{
+             objectFit: "contain",
+             height: "280px",
+             padding: "1rem",
+             marginTop: "8rem",
+           }}
+           src="https://images.meesho.com/images/marketing/1649759799809.webp"
+           alt=""
+         />
+           </Link>
           </div>
         </div>
       </div>
@@ -160,6 +212,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      </div>
 
       <div className="flex justify-center mt-7">
         <img className="w-[63%]" src={pic3} alt="" />
@@ -167,78 +220,21 @@ const Home = () => {
       <div className="flex justify-center mt-7">
         <img className="w-[66%]" src={pic2} alt="" />
       </div>
-      <div className="mx-auto mt-16">
+
+     
+      <div className="mx-auto mt-16 ml-8">
         <Heading>Products For You</Heading>
       </div>
-      <div style={{ display: "flex" }}>
-        <div>
-          <div className="leading-14">
-            <Accordion defaultIndex={[0]} allowMultiple>
-              <AccordionItem>
-                <h2>
-                  <div
-                    onMouseLeave={() => setsortingHover(false)}
-                    onClick={() => setsortingHover(!sortingHover)}
-                    className={`  hover:bg-slate-400 cursor-pointer flex flex-row px-4 py-1 border gap-x-2 ${
-                      sortingHover && "group"
-                    } `}
-                  >
-                    <div>Sort By</div>
-                    <div className="duration-1000 group-hover:-rotate-180">
-                      <AccordionIcon />
-                    </div>
-                  </div>
-                </h2>
-                <div pb={4}>
-                  <div className="hover:bg-pink-200">Revelance</div>
-                  <div className="hover:bg-pink-200">Price: Low to High</div>
-                  <div className="hover:bg-pink-200">New Arrivals</div>
-                  <div className="hover:bg-pink-200">Ratings</div>
-                </div>
-              </AccordionItem>
-            </Accordion>
-          </div>
-          <div className="leading-14">
-            <Accordion allowMultiple>
-              <AccordionItem>
-                <h2>
-                  <AccordionButton>
-                    <Box as="span" textAlign="left">
-                      Category
-                    </Box>
-                  </AccordionButton>
-                </h2>
-                <AccordionPanel pb={4}>
-                  <div className="hover:bg-pink-200">Men Top Wear</div>
-                  <div className="hover:bg-pink-200">Women Wear</div>
-                  <div className="hover:bg-pink-200">New Arrivals</div>
-                  <div className="hover:bg-pink-200">Kids Wear</div>
-                </AccordionPanel>
-              </AccordionItem>
-            </Accordion>
-          </div>
-          <div className="leading-14">
-            <Accordion allowMultiple>
-              <AccordionItem>
-                <h2>
-                  <AccordionButton>
-                    <Box as="span" textAlign="left">
-                      Price
-                    </Box>
-                  </AccordionButton>
-                </h2>
-                <AccordionPanel pb={4}>
-                  <div className="hover:bg-pink-200">Under 300</div>
-                  <div className="hover:bg-pink-200">under 500</div>
-                  <div className="hover:bg-pink-200">Under 1000</div>
-                  <div className="hover:bg-pink-200">Under 5000</div>
-                </AccordionPanel>
-              </AccordionItem>
-            </Accordion>
-          </div>
-        </div>
-      </div>
+ 
+      
+
+      <div className="">
+   
+                <ProductsList/>
+       </div>
+
       <Footer />
+      <Accordion1/>
     </div>
   );
 };

@@ -9,7 +9,7 @@ import Pagination from "../Components/Pagination/Pagination";
 import Filter from "../Components/Filter";
 
 const ProductsList = (prop) => {
-  const { path, p, productKey } = prop;
+  let { path, p, productKey } = prop;
   // console.log("productKey: fefwfwe", productKey);
   const [filt,setFilt]=useState([])
 
@@ -20,13 +20,20 @@ const ProductsList = (prop) => {
   const [page, setPage] = useState(parseInt(initState) || 1);
   const loc = useLocation();
   // console.log(loc);
+
+  // console.log("path",path)
+  if(!path){
+    path="allsarees"
+  }
+
   const getProducts = async (arg = 1) => {
+    
     // let newaPath =pathname.split("").filter((el)=> el!=="/" && el!== "%" && el!=="2" && el!=="0").join("").toLocaleLowerCase()
     let newPath = path.replaceAll(" ", "").toLowerCase();
     setLoading(true);
     axios
       .get(
-        `https://meshoo-mock-server-app.onrender.com/${newPath}?_page=${page}&_limit=16`
+        `https://meshoo-mock-server-app.onrender.com/${newPath }?_page=${page}&_limit=16`
       )
       .then((res) => {
         setLoading(false);
@@ -72,12 +79,38 @@ const ProductsList = (prop) => {
   }
   // console.log("filt",data)
 
+  const sortingHandler =(item)=>{
+
+   let newData = data.map((ele)=>{
+     return ({...ele,price:parseInt(ele.price.split("").splice(1).join(""))})
+    })
+
+    if(item === "asc"){
+      newData = newData.sort((a,b)=>{
+        return a.price - b.price;
+      })
+      setFilt(newData)
+    }
+    else if( item === "desc"){
+      newData = newData.sort((a,b)=> b.price - a.price)
+      setFilt(newData)
+    }
+
+
+    
+
+
+
+
+  }
+  
+
 
   return (
     <div className="px-8 py-10">
       <div className="flex flex-row gap-x-20  justify-around  ">
-        <div className="border-2 hidden sm:block">
-          <Filter filtByRating={filtByRating} />
+        <div className=" shadow-xl hidden sm:block">
+          <Filter filtByRating={filtByRating} sortingHandler={sortingHandler} />
         </div>
         <div className="grid max-[320px]:grid-cols-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-8 gap-y-10 ">
          {filt.length > 0 &&filt.map((ele) => {

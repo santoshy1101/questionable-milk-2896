@@ -1,0 +1,24 @@
+.footerParent{
+    display: flex ;
+    justify-content: center;
+    gap:4%
+    
+  }
+  @media all and (min-width:481px)and (max-width:768px){
+    .footerParent{
+      display: grid ;
+      grid-template-columns: repeat(2, 1fr);
+      align-content: center;
+      justify-content: center;
+      margin: auto;
+    }
+  }
+  @media all and (min-width:320px)and (max-width:480px){
+    .footerParent{
+      display: grid ;
+      grid-template-columns: repeat(1, 1fr);
+      align-items: center;
+      justify-content: center;
+      margin-left: 20px;
+    }
+  }

@@ -14,12 +14,12 @@ const ListOfRating = [
   
 ]
 
-const Filter = ({filtByRating}) => {
+const Filter = ({filtByRating,sortingHandler}) => {
   const [searchParams, setSearchParams] = useSearchParams()
   const initState = searchParams.getAll('category')
   const [category, setCategory] = useState( [])
   const [ratArr, setRatArr] = useState( [])
-  const initSort = searchParams.get("_order")
+  const [initSort,setinitSort]= useState("")
   const[sort, setSort] = useState(initSort || "")
 
   const handleChecked = (e) => {
@@ -63,7 +63,14 @@ const Filter = ({filtByRating}) => {
     }
   }
 
-  console.log(ratArr)
+
+  const sorting=(item)=>{
+    setinitSort(item)
+    sortingHandler(item)
+  }
+
+
+  // console.log(ratArr)
   return (
     <div className='px-10 py-5'>
       <h2 className="my-4 text-xl font-semibold text-center " >Filter</h2>
@@ -99,37 +106,11 @@ const Filter = ({filtByRating}) => {
 
 
       <div  className="flex items-center justify-between px-4 border ">
-      <input type="radio" className="w-5 h-10 border-2 " name="sort" value="asc" onChange={(e)=>setSort(e.target.value)} checked={initSort=="asc"}/>
+      <input type="radio" className="w-5 h-10 border-2 " name="sort" value="asc" onChange={(e)=>sorting(e.target.value)} checked={initSort=="asc"}/>
       <label >Low To High</label>
       </div>
       <div  className="flex items-center justify-between px-4 border ">
-      <input type="radio" className="w-5 h-10 border-2 " name="sort" value="desc" onChange={(e)=>setSort(e.target.value)} checked={initSort=="desc"}/>
-      <label >High To Low</label>
-      </div>
-      </div>
-      <div className='my-4'>
-      <h2 className="px-2 text-xl font-semibold border-2">Sort By Rating</h2>
-
-
-      <div  className="flex items-center justify-between px-4 border ">
-      <input type="radio" className="w-5 h-10 border-2 " name="sort" value="asc" onChange={(e)=>setSort(e.target.value)} checked={initSort=="asc"}/>
-      <label >Low To High</label>
-      </div>
-      <div  className="flex items-center justify-between px-4 border ">
-      <input type="radio" className="w-5 h-10 border-2 " name="sort" value="desc" onChange={(e)=>setSort(e.target.value)} checked={initSort=="desc"}/>
-      <label >High To Low</label>
-      </div>
-      </div>
-      <div className='my-4'>
-      <h2 className="px-2 text-xl font-semibold border-2">Sort By Reviews</h2>
-
-
-      <div  className="flex items-center justify-between px-4 border ">
-      <input type="radio" className="w-5 h-10 border-2 " name="sort" value="asc" onChange={(e)=>setSort(e.target.value)} checked={initSort=="asc"}/>
-      <label >Low To High</label>
-      </div>
-      <div  className="flex items-center justify-between px-4 border ">
-      <input type="radio" className="w-5 h-10 border-2 " name="sort" value="desc" onChange={(e)=>setSort(e.target.value)} checked={initSort=="desc"}/>
+      <input type="radio" className="w-5 h-10 border-2 " name="sort" value="desc" onChange={(e)=>sorting(e.target.value)} checked={initSort=="desc"}/>
       <label >High To Low</label>
       </div>
       </div>
