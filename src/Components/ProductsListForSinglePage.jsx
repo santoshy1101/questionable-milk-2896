@@ -14,8 +14,8 @@ const ProductsListForSinglePage = (prop) => {
   const [data,setData] = useState([])
   const [loading ,setLoading]= useState(false)
   const [searchParams,setSearchParams] = useSearchParams()
-  let initState = searchParams.get('page')
-  const [page, setPage]=useState(parseInt(initState)   || 1);
+  // let initState = searchParams.get('page')
+  const [page, setPage]=useState( 1);
   const loc = useLocation();
 // console.log(loc);
   const getProducts = async (arg=1) => {
@@ -37,7 +37,7 @@ const ProductsListForSinglePage = (prop) => {
       page,
       limit:16
     }
-   setSearchParams(params)
+  //  setSearchParams(params)
     window.scrollTo(0, 0)
   },[page,path])
 

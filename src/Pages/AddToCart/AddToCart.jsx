@@ -9,6 +9,8 @@ import {
 } from '../../Redux/AddtoCart/action'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import {BsPlusSquareFill} from "react-icons/bs"
+import {AiFillMinusSquare} from "react-icons/ai"
 
 export default function AddToCart() {
   const [totalPrice, setTotalPrice] = useState(0)
@@ -61,106 +63,108 @@ export default function AddToCart() {
             alt=""
           />
           <p className="emptycart">Your Cart is empty</p>
-          <div className=" text-center ">
+          <div className="text-center ">
             <Link to="/">
               <button className="viewbtn">Viem Product</button>
             </Link>
           </div>
         </div>
       ) : (
-        <div className="flex justify-center items-center my-3">
+        <div className="flex flex-col items-center justify-around max-h-full px-4 py-8 sm:items-start gap-y-3 gap-x-4 sm:flex-row ">
           {/* left side */}
 
-          <br />
-          <div className=" flex flex-col gap-y-4 ">
+          <div className="">
             <h1
               className="decoration-black
     font-medium
     text-[18px]"
             >
               Cart{' '}
-              <span style={{ color: 'rgb(153, 153, 153)' }}>
+              <span  className='text-slate-400'>
                 | {totalItem} Item
               </span>
-            </h1>
+            </h1>  
+            <div className='flex gap-y-4 flex-col mb-8 border items-center px-8 py-5 w-[100%]  shadow-xl rounded-sm '>
             {item.map.length > 0 &&
               item.map(({ id, img1, price, size, quantity, name }) => {
                 return (
-                  <div className="left-side" key={id}>
-                    <div className="card-section">
-                      <div>
-                        <img className="img-class" src={img1} alt={name} />
+                  <div className="flex sm:gap-2 items-center font-semibold border  gap-y-8 px-4 flex-col md:flex-row py-8  shadow-md rounded-sm w-[100%]" key={id}>
+                 
+                      <div className='rounded-lg w-[100%] sm:w-[200px]  h-[170px] '>
+                        <img className="w-[100%] h-[100%]  object-contain" src={img1} alt={name} />
                       </div>
 
-                      <div>
-                        <p className="name-class">{name}</p>
+                      <div className='flex flex-col  w-[100%] gap-y-4'>
+                        <p className="text-sm ">{name}</p>
 
-                        <div className="flex">
-                          <p className="size-class">Size: {size}</p>
-                          <p>
-                            Qty:
-                            <i
-                              className="fas fa-minus minus ml-[20px]"
-                              onClick={() => dispatch(decrementActionCart(id))}
-                            ></i>
+                        <div className="flex justify-between items-center text-[10px]">
+                          <p className='w-[120px] te'>Size: {size}</p>
+                          <div className='flex items-center gap-x-2 w-[] '>
+                           Qty:
+                            <div onClick={() => dispatch(decrementActionCart(id))}>
+                            <AiFillMinusSquare size={25}/>
+                            </div>
+                           
                             <input
-                              className=" text-center w-[10%] ml-[5px] "
+                              className=" text-center w-[10%]  "
                               type="text"
                               placeholder={quantity}
                               disabled
                             />
-                            <i
-                              className="fas fa-plus add"
-                              onClick={() => dispatch(increamentActionCart(id))}
-                            ></i>
-                          </p>
+                         
+                            <div onClick={() => dispatch(increamentActionCart(id))}>
+                            <BsPlusSquareFill size={20}/>
+                            </div>
+                          </div>
                         </div>
 
-                        <p style={{ marginBottom: '18px' }}>{price}</p>
+                      <div className='flex gap-4 '>Price:  {price}</div>
 
-                        <button
-                          className="rem-class"
+                        <button 
+                          className="text-[#F43397] text-start "
                           onClick={() => dispatch(removeActionCart(id))}
                         >
                           REMOVE
                         </button>
                       </div>
 
-                      <div>
-                        <button className="edit-class m-[10px]">EDIT</button>
-                      </div>
                     </div>
-                  </div>
+               
                 )
-              })}
+              })
+            }
+          </div>
           </div>
 
-          <div className="vertical"></div>
+         
 
           {/* Right side */}
-          <div className="right-side ">
-            <h2 className="price-class">Price Details</h2>
+          <div className="text-[12px] h-[90%] lg:w-[300px] md:w-[290px] sm:w-[40%] w-[290px] px-8 py-4 border flex flex-col gap-y-2 shadow-2xl rounded-sm ">
+            <h2 className="text-xl font-bold">Price Details</h2>
 
-            <div className="total-class">
+            <div className="flex justify-between py-2 font-semibold">
               {/* className="flex justify-between" */}
               <p>Total Product Price </p>
               <p>₹{totalAmount}</p>
             </div>
-            <hr style={{ border: '1px solid rgb(240 240 240)' }} />
+           <div className='border-[0.5px]'></div>
             {/* style={{ border: "1px solid rgb(240 240 240)" }} */}
-            <div className="order-class ">
-              {/* className="flex justify-between items-center" */}
+            <div className="flex justify-between font-semibold">
+              {/* className="flex items-center justify-between" */}
               <p>Order Total </p>
               <p>₹{totalAmount}</p>
             </div>
             <Link to={'/address'}>
-              <button className="ctn-class">Continue</button>
+              <div className="py-2 my-2 md:text-2xl text-[14px] text-center bg-[#F43397] rounded-lg text-slate-50">Continue</div>
             </Link>
+            <div className='w-[100%]'>
             <img
               src="	https://images.meesho.com/images/marketing/1588578650850.webp"
-              className="img-class2"
+              className="w-[100%]"
+              
               alt=""
             />
+            </div>
           </div>
         </div>
       )}

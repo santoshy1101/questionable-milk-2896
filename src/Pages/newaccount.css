@@ -22,13 +22,13 @@
     justify-content: center;
    background-repeat: no-repeat;
    background-size: cover;
+   padding: 20px;
+   
 }
 .box111{
     margin: auto;
 box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;;
 background: white;
-padding: 3%;
-margin-top: 1%;
 
 }
 .box111 img{

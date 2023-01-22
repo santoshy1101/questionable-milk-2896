@@ -1,4 +1,4 @@
-import "./newaccount.css";
+// import "./newaccount.css";
 import { useState } from "react";
 import { Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
@@ -56,9 +56,9 @@ export default function NewAccount() {
   };
 
   return (
-    <div>
-      <div className="background1">
-        <div className="box111">
+    <div >
+      <div className=" background1">
+        <div className="flex flex-col px-8 py-8  box111 rounded-xl gap-y-4">
           <img
             src="https://images.meesho.com/images/marketing/1661417516766.webp"
             alt=""
