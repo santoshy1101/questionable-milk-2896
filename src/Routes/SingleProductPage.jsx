@@ -116,15 +116,15 @@ function SingleProductPage({ productKey }) {
       <div className="flex flex-col mt-5 ml-20 mr-20  lg:flex-row md:flex-col">
         {/* left side */}
         <div className="flex">
-          <div>
+          <div className="leftdiv">
             <img
-              className="w-20 mx-1 border-solid border-2 border-sky-500  rounded"
+              className="w-20  mx-1 border-solid border-2 border-sky-500  rounded leftside"
               src={product.img1}
               alt=""
             />
           </div>
 
-          <div>
+          <div className="left2div">
             {/* middle side */}
             <div className="mx-3 border-solid border border-sky-rgb(240 240 240)  rounded">
               <img
@@ -155,7 +155,7 @@ function SingleProductPage({ productKey }) {
         </div>
 
         <div>
-          <div className="mx-3 py-3 px-5 border-solid border border-sky-rgb(240 240 240)  rounded ">
+          <div className="mx-3 py-3 px-5 border-solid border border-sky-rgb(240 240 240)  rounded rightside1">
             <h2 className="heading">{product.name}</h2>
             <h2 className="font-bold font text-lg mt-2">{product.price}</h2>
             {/* <p className="rating">{product.rating}</p> */}
@@ -173,7 +173,7 @@ function SingleProductPage({ productKey }) {
             <p className="delivery">{product.delivery}</p>
           </div>
 
-          <div className="mx-3 py-3 px-5 border-solid border border-sky-rgb(240 240 240)  rounded my-3 ">
+          <div className="mx-3 py-3 px-5 border-solid border border-sky-rgb(240 240 240)  rounded my-3 sizediv ">
             <h2 className="font-bold my-3">Select Size</h2>
             <div className="flex gap-x-5">
               {product.size &&
@@ -192,7 +192,7 @@ function SingleProductPage({ productKey }) {
             </div>
           </div>
 
-          <div className="mx-3 py-3 px-5 border-solid border border-sky-rgb(240 240 240)  rounded my-3">
+          <div className="mx-3 py-3 px-5 border-solid border border-sky-rgb(240 240 240)  rounded my-3 sizediv">
             <h2 className="my-5">Product Details</h2>
             <p>Name : {product.name}</p>
             {/* <p className="w-[30%]">Desc : {product.desc}</p> */}
