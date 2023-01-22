@@ -50,7 +50,7 @@ const Navbar = () => {
 
   const subCategoryClickHandler = (path) => {
         let newPath =path.replaceAll(" ","").toLocaleLowerCase()
-    console.log(newPath);
+ 
     setNavCatSelect("");
     navigate(`/${newPath}`);
   };

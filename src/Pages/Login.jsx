@@ -83,14 +83,16 @@ export const Login = () => {
 
   return (
     <div>
-      <div className="background1">
-        <div className="box111">
+      <div className="flex flex-col background1">
+      
+      <p className="mb-8 text-3xl font-semibold text-center py-1 ring-2 ring-pink-400 rounded-md w-[30%] text-slate-500">User Login</p>
+        <div className="flex flex-col px-8 py-8 box111 rounded-xl gap-y-4">
           <img
             src="https://images.meesho.com/images/marketing/1661417516766.webp"
             alt=""
           />
 
-          <FormControl>
+          <FormControl >
             <FormLabel>Email</FormLabel>
             <Input
               type="email"
@@ -119,6 +121,7 @@ export const Login = () => {
             </Button>
             <br />
           </FormControl>
+         <Link to="/signup" className="flex"> <button className=" hover:text-pink-400 w-[100px] rounded-3xl text-md font-semibold text-slate-50 ml-auto py-2 bg-slate-600">SignUp</button></Link>
         </div>
       </div>
     </div>
