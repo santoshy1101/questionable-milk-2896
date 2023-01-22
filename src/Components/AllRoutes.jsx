@@ -5,12 +5,13 @@ import SingleProductPage from "../Routes/SingleProductPage";
 
 import { singleProductName } from "../All Data/singleProductName";
 import Address from "../Pages/AddAddress/Address";
-import AddToCart from "../Pages/AddToCart";
+// import AddToCart from "../Pages/AddToCart";
 import NewAccount from "../Pages/SignUp";
 import ProductsList from "../Pages/ProductsList";
 
 import Payment from "../Pages/Payment";
 import { Login } from "../Pages/Login";
+import AddToCart from "../Pages/AddToCart/AddToCart";
 
 const AllRoutes = () => {
   return (
