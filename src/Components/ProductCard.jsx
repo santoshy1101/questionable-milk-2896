@@ -17,7 +17,7 @@ const ProductCard = ({
   price,
   productKey,
 }) => {
-  console.log("Prodcut key of ", productKey);
+  // console.log("Prodcut key of ", productKey);
 
   return (
     <div className="group over">

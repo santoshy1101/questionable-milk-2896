@@ -6,10 +6,12 @@ import { useLocation, useParams, useSearchParams } from "react-router-dom";
 import ProductCard from "../Components/ProductCard";
 import Loading from "../Components/Loader/Loading";
 import Pagination from "../Components/Pagination/Pagination";
+import Filter from "../Components/Filter";
 
 const ProductsList = (prop) => {
   const { path, p, productKey } = prop;
-  console.log("productKey: fefwfwe", productKey);
+  // console.log("productKey: fefwfwe", productKey);
+  const [filt,setFilt]=useState([])
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -17,7 +19,7 @@ const ProductsList = (prop) => {
   let initState = searchParams.get("page");
   const [page, setPage] = useState(parseInt(initState) || 1);
   const loc = useLocation();
-  console.log(loc);
+  // console.log(loc);
   const getProducts = async (arg = 1) => {
     // let newaPath =pathname.split("").filter((el)=> el!=="/" && el!== "%" && el!=="2" && el!=="0").join("").toLocaleLowerCase()
     let newPath = path.replaceAll(" ", "").toLowerCase();
@@ -29,6 +31,7 @@ const ProductsList = (prop) => {
       .then((res) => {
         setLoading(false);
         setData(res.data);
+        setFilt(res.data)
       })
       .catch((err) => {
         console.log(err);
@@ -44,24 +47,44 @@ const ProductsList = (prop) => {
     };
     setSearchParams(params);
     window.scrollTo(0, 0);
+
   }, [page, path]);
 
   if (loading) {
     return <Loading />;
   }
+
+  const filtByRating=(item)=>{
+   
+    item= +item
+    // console.log("item",typeof(item))
+    // setFilt(item)
+    if(item){
+      let newData = data.filter((el)=>{
+       return el.rating>=item
+      }) ;
+      // console.log(newData);
+    setFilt(newData)
+    }
+    else{
+      setFilt(data)
+    }
+  }
+  // console.log("filt",data)
+
+
   return (
     <div className="px-8 py-10">
       <div className="flex flex-row gap-x-20  justify-around  ">
         <div className="border-2 hidden sm:block">
-          {/* <SidebarSaree /> */}
+          <Filter filtByRating={filtByRating} />
         </div>
         <div className="grid max-[320px]:grid-cols-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-8 gap-y-10 ">
-          {data.length > 0 &&
-            data.map((ele) => {
+         {filt.length > 0 &&filt.map((ele) => {
               return (
                 <ProductCard productKey={productKey} key={ele.id} {...ele} />
               );
-            })}
+            })} 
         </div>
       </div>
       <Pagination
