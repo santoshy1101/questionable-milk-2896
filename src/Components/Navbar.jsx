@@ -13,6 +13,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { useDebounce } from "use-debounce";
 import ProductsList from "../Pages/ProductsList";
 import ProductCard from "./ProductCard";
+import SearchComponent from "./SearchComponent";
 const catList = [
   "Women Ethnic",
   "Women Western",
@@ -38,6 +39,7 @@ const Navbar = () => {
   const [debouncedSearchTerm] = useDebounce(searchTerm, 300);
   const [sarees, setSarees] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
+  // const [showDataSearch,setShowDataSearch]=useState(true)
 
   useEffect(() => {
     fetch("https://meshoo-mock-server-app.onrender.com/allsarees")
@@ -49,6 +51,7 @@ const Navbar = () => {
     if (debouncedSearchTerm === "") {
       setSearchResults([]);
     } else {
+      // setShowDataSearch(true);
       const results = sarees.filter((saree) =>
         saree.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
       );
@@ -285,7 +288,11 @@ const Navbar = () => {
             //   <h2>{result.name}</h2>
             //   <p>{result.price}</p>
             // </div>
-            <ProductCard productKey={"All Sarees"} key={index} {...result} />
+            <SearchComponent
+              productKey={"All Sarees"}
+              key={index}
+              {...result}
+            />
           ))}
         </div>
       )}

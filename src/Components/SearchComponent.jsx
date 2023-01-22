@@ -1,49 +1,66 @@
-import React, { useState, useEffect } from "react";
-import { useDebounce } from "use-debounce";
+import React from "react";
+import { Box, Badge } from "@chakra-ui/react";
+import { img1 } from "@chakra-ui/react";
+import { StarIcon } from "@chakra-ui/icons";
+import { Link, useLocation } from "react-router-dom";
+//import {AiFillStar} from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
+import "./SearchComponents.css";
 
-const SearchComponent = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [debouncedSearchTerm] = useDebounce(searchTerm, 300);
-  const [sarees, setSarees] = useState([]);
-  const [searchResults, setSearchResults] = useState([]);
-
-  useEffect(() => {
-    fetch("https://meshoo-mock-server-app.onrender.com/allsarees")
-      .then((response) => response.json())
-      .then((data) => setSarees(data));
-  }, []);
-
-  useEffect(() => {
-    if (debouncedSearchTerm === "") {
-      setSearchResults([]);
-    } else {
-      const results = sarees.filter((saree) =>
-        saree.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
-      );
-      setSearchResults(results);
-    }
-  }, [debouncedSearchTerm, sarees]);
+const SearchComponent = ({
+  onwards,
+  delivery,
+  rating,
+  reviews,
+  id,
+  img1,
+  name,
+  price,
+  productKey,
+}) => {
+  console.log("Prodcut key of ", productKey);
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Search..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      {searchResults.length > 0 ? (
-        <div>
-          {searchResults.map((result) => (
-            <div key={result.id}>
-              <h2>{result.name}</h2>
-              <p>{result.price}</p>
+    <div className="group over my-[20px] mx-[168px] searchdiv1 ">
+      <Link to={`/${productKey}/${id}`}>
+        <div className="duration-500  border group-hover:shadow-sm group-hover:shadow-slate-500 w-[100%] rounded-3xl grid grid-cols-2 gap-10  searchdiv2 ">
+          {/* <img src={img1} alt="img1" height="350px" width="100%" /> */}
+
+          <div className="h-[250px] ">
+            <img
+              className="w-[100%] p-[20px] rounded-[40px]   h-[100%] bg-cover"
+              src={img1}
+              alt={name}
+            />
+          </div>
+          <div className="px-4 py-4">
+            <div className="text-md font-semibold text-slate-400">{name}</div>
+
+            <div className="flex flex-col gap-y-2 ">
+              <div className="flex items-end gap-x-2">
+                <div className="text-2xl font-bold">{price}</div>
+                <p className="text-sm font-semibold text-slate-400">
+                  {onwards}
+                </p>
+              </div>
+              <div className=" w-[110px] px-3 my-2 bg-slate-300 text-sm py-1 rounded-lg font-semibold">
+                {delivery}
+              </div>
+              <div className=" flex items-center gap-x-2">
+                <div className=" gap-x-1 px-2 rounded-2xl text-slate-50 text-lg font-semibold flex bg-green-400 items-center">
+                  <p>{rating}</p>
+                  <div>
+                    <AiFillStar color="white" size={15} />
+                  </div>
+                </div>
+                <div className="text-sm font-semibold text-slate-400">
+                  {reviews}
+                </div>
+              </div>
             </div>
-          ))}
+          </div>
         </div>
-      ) : (
-        <div>No results found.</div>
-      )}
+      </Link>
     </div>
   );
 };
