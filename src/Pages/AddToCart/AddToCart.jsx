@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import './AddToCart.css'
+import "./AddToCart.css";
 import {
   decrementActionCart,
   getTotalActionCart,
