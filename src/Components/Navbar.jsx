@@ -9,7 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { navListData } from "../All Data/navCategoryList";
 import { useDispatch, useSelector } from "react-redux";
 import { getTotalActionCart } from "../Redux/AddtoCart/action";
-
+import {HiOutlineShoppingBag} from "react-icons/hi"
 const catList = [
   "Women Ethnic",
   "Women Western",
@@ -25,6 +25,7 @@ const catList = [
 const Navbar = () => {
   const [searchText, setSearchText] = useState("");
   const [navCatSelect, setNavCatSelect] = useState("");
+  const [profile, setProfile] = useState("");
   const [navCatData, setNavCatData] = useState([]);
   const { WomenEthnic } = navListData;
   const navigate = useNavigate();
@@ -48,19 +49,31 @@ const Navbar = () => {
   };
 
   const subCategoryClickHandler = (path) => {
+        let newPath =path.replaceAll(" ","").toLocaleLowerCase()
+    console.log(newPath);
     setNavCatSelect("");
-    navigate(`/${path}`);
+    navigate(`/${newPath}`);
   };
 
   useEffect(() => {
     dispatch(getTotalActionCart());
   }, [item]);
 
+  const profileHandler =(file)=>{
+    file=file.toLowerCase().replaceAll(" ","")
+    if(file ==="hello,useroradmintoaccessyourmeeshooaccountuseradminmyorders"){
+      setProfile("profile")
+    }
+    else{
+      setProfile(file)
+    }
+  }
+
   return (
     <div className="sticky top-0 bg-[#ffffff]">
       <div
         onMouseEnter={() => setNavCatSelect("")}
-        className="border-b-[1.2px]  flex-col-reverse lg:flex-row  border-gray-400 flex px-8 items-center justify-between"
+        className="border-b-[1.2px] relative  flex-col-reverse lg:flex-row  border-gray-400 flex px-8 items-center justify-between"
       >
         {/* nav-top left side div */}
         <div className="flex flex-col w-[100%]  lg:flex-row items-center border  justify-between lg:w-[40%]  gap-x-[40px] ">
@@ -94,7 +107,7 @@ const Navbar = () => {
         </div>
         {/* nav-top right side div */}
 
-        <div className="flex items-center justify-between gap-4 lg:w-[40%]  w-[100%]">
+        <div className="flex items-center font-semibold  justify-between gap-4 lg:w-[40%]  w-[100%]">
           <div className="w-[60px] my-2 rounded-3xl lg:hidden sm:block">
             {/* logo */}
             <Link to="/">
@@ -109,25 +122,27 @@ const Navbar = () => {
               <div>Download App</div>
             </div>
           </div>
-          <div className="h-[45px] border border-gray-400 hidden lg:block"></div>
+          <div   className="h-[45px] border border-gray-400 hidden lg:block"></div>
           <div className="hidden lg:block">Become a Supplier</div>
           <div className="h-[45px] border border-gray-400  hidden lg:block"></div>
-          <div className="flex">
-            <div className="flex flex-col items-center justify-center p-2 ">
+          <div className="flex " >
+            <div onMouseLeave={()=>setProfile("")}  onMouseEnter={(e) => profileHandler(e.target.textContent)} className={`flex flex-col  items-center justify-center p-2 cursor-pointer ${profile==="profile"  ? "text-[#F43397]" :"text-black"}`}>
               <div className="">
                 <VscAccount size={20} />
               </div>
-              <div className="">Profile</div>
+              <div >Profile</div>
             </div>
-            <div className=" flex flex-col items-center justify-center p-2">
-              <Link to="/Add to cart">
+            <Link to="/Add to cart">
+            <div className="flex flex-col items-center justify-center p-2 hover:text-[#F43397]">
+              
                <div className={` ${totalItem > 0 ? "block" :"hidden"} px-2 text-lg font-semibold bg-[#F43397] rounded-full  text-slate-50`}>{totalItem}</div>
                 <div>
                   <FiShoppingCart size={20} />
                 </div>
                 <div>Cart</div>
-              </Link>
+              
             </div>
+            </Link>
           </div>
         </div>
       </div>
@@ -188,6 +203,23 @@ const Navbar = () => {
               </ul>
             ))}
         </div>
+      </div>
+
+      <div onMouseLeave={()=>setProfile("")} onMouseEnter={(e) => profileHandler(e.target.textContent)} className={`${profile==="profile" ? "block"  : "hidden"} `}>
+      <div className="  border absolute top-[68px] bg-white right-5 rounded-md shadow-2xl gap-y-4 py-4 w-[250px] flex flex-col px-4 group">
+        <div>
+        <p className="text-xl font-semibold">Hello, User Or Admin</p>
+        <p className="text-[12px] font-semibold text-slate-400">To access your Meeshoo account</p>
+        </div>
+       <Link to="login"> <div className="bg-[#F43397] cursor-pointer rounded-[4px] text-slate-50 text-center py-3 font-semibold text-xl">User</div> </Link>
+        <div className="bg-[#F43397] cursor-pointer rounded-[4px] text-slate-50 text-center py-3 font-semibold text-xl">Admin</div>
+        <div className="border-[0.5px]"></div>
+        
+        <div className="flex items-center gap-x-4">
+        <div><HiOutlineShoppingBag size={20}/></div>
+        <p className="text-lg font-semibold">My Orders</p>
+        </div>
+      </div>
       </div>
     </div>
   );

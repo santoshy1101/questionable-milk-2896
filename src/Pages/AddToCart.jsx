@@ -24,6 +24,21 @@ export default function AddToCart() {
   // console.log("totalAmount: ", totalAmount);
 
   const dispatch = useDispatch();
+  const [overightData, setOverightData] = useState([]);
+
+  // const getData = () => {
+  //   // axios.post("http://localhost:8080/posts",)
+
+  //   axios
+  //     .get("http://localhost:8080/posts")
+  //     .then((res) => setOverightData(res.data));
+  // };
+
+  // let newProduct;
+  // const hadleAdd = () => {
+  //   console.log("Add");
+  //   axios.post("http://localhost:8080/posts", newProduct);
+  // };
 
   // const getData = () => {
   //   axios
@@ -39,6 +54,14 @@ export default function AddToCart() {
   // }, []);
 
   useEffect(() => {
+    // getData();
+    // newProduct = item.map((curElem) => {
+    //   if (curElem.id === overightData.id) {
+    //     return { ...curElem, quantity: overightData.quantity };
+    //   }
+    //   return curElem;
+    // });
+
     dispatch(getTotalActionCart());
   }, [item]);
 

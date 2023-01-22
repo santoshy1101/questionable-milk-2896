@@ -1,0 +1,35 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "img1": "https://images.meesho.com/images/products/163811080/mpe2w_400.jpg",
+      "name": "Stylish Fashionable Men Tshirts",
+      "price": "₹250",
+      "onwards": "onwards",
+      "delivery": "Free Delivery",
+      "rating": 3.7,
+      "reviews": "141 Reviews",
+      "size": "M",
+      "desc": "Stylish Fashionable Men Tshirts, Round neck, Half Sleeve t-shirts for men is made frOM 100% OF POLYESTER which is pre-shrunk and bio-washed for longevity is a perfect treat for Men & Boys who like to move out in style. This tshirt is available in 3 sizes - M L XL.",
+      "id": 2,
+      "quantity": 1
+    },
+    {
+      "img1": "https://images.meesho.com/images/products/161848931/fqwag_400.jpg",
+      "name": "Trendy Partywear Men Shirts",
+      "price": "₹322",
+      "onwards": "onwards",
+      "delivery": "Free Delivery",
+      "rating": 3.7,
+      "reviews": "73 Reviews",
+      "size": "M",
+      "desc": "Trendy Partywear Men Shirts, Round neck, Half Sleeve t-shirts for men is made frOM 100% OF POLYESTER which is pre-shrunk and bio-washed for longevity is a perfect treat for Men & Boys who like to move out in style. This tshirt is available in 3 sizes - M L XL.",
+      "id": 11,
+      "quantity": 1
+    }
+  ]
+}
