@@ -44,7 +44,7 @@ const Navbar = () => {
 
   //UserName Logic
   const isAuth = useSelector((store) => store.authReducer.isAuth);
-  console.log("isAuth: ", isAuth);
+  // console.log("isAuth: ", isAuth)
   let profileNameGet = JSON.parse(localStorage.getItem("dataSignup"));
   // console.log("profileNameGet: ", profileNameGet);
   // if(!profileName)
