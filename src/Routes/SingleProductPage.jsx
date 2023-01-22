@@ -113,7 +113,7 @@ function SingleProductPage({ productKey }) {
 
   return (
     <div>
-      <div className="flex mt-5 ml-20 mr-20">
+      <div className="flex flex-col mt-5 ml-20 mr-20  lg:flex-row md:flex-col">
         {/* left side */}
         <div className="flex">
           <div>
@@ -195,8 +195,9 @@ function SingleProductPage({ productKey }) {
           <div className="mx-3 py-3 px-5 border-solid border border-sky-rgb(240 240 240)  rounded my-3">
             <h2 className="my-5">Product Details</h2>
             <p>Name : {product.name}</p>
-            <p> Net Quantity (N): </p>
-            <p>Sizes :{product.size}</p>
+            {/* <p className="w-[30%]">Desc : {product.desc}</p> */}
+            <p> Net Quantity (N): {product.quantity} </p>
+            <p>Sizes : {product.size}</p>
             <p> Country of Origin : India</p>
           </div>
         </div>

@@ -1,52 +1,66 @@
-import { Button, Heading, Box } from '@chakra-ui/react'
-import { 
+import { Button, Heading, Box } from "@chakra-ui/react";
+import {
   Accordion,
   AccordionItem,
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
-} from '@chakra-ui/react'
-import React from 'react'
-import pic1 from '../../assets/pic1.png'
-import pic2 from '../../assets/supplier.png'
-import pic3 from '../../assets/buisnesswithZero.png'
-import Footer from '../../Components/Footer'
-import './Home.css'
-import { useSelector } from 'react-redux'
+} from "@chakra-ui/react";
+import React from "react";
+import pic1 from "../../assets/pic1.png";
+import pic2 from "../../assets/supplier.png";
+import pic3 from "../../assets/buisnesswithZero.png";
+import Footer from "../../Components/Footer";
+import "./Home.css";
+import { useSelector } from "react-redux";
+import { useState } from "react";
+import { useEffect } from "react";
 const categoery = [
   {
-    name: 'Men top wear',
+    name: "Men top wear",
   },
   {
-    name: 'Women Top wear',
+    name: "Women Top wear",
   },
   {
-    name: 'Kids Wear',
+    name: "Kids Wear",
   },
-]
+];
 
 const price = [
   {
-    name: 'Below 500',
+    name: "Below 500",
   },
   {
-    name: '500-1000',
+    name: "500-1000",
   },
   {
-    name: '1000-2000',
+    name: "1000-2000",
   },
   {
-    name: '2000-3000',
+    name: "2000-3000",
   },
   {
-    name: '3000-4000',
+    name: "3000-4000",
   },
-]
+];
 
 const Home = () => {
-  const [sortingHover, setsortingHover] = React.useState(false)
+  const [sortingHover, setsortingHover] = React.useState(false);
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    let isAuth = JSON.parse(localStorage.getItem("dataSignup"));
+    // console.log("profileName: ", profileName[0].name);
+    if (isAuth) {
+      setName(isAuth[0].name);
+    }
+  }, []);
+  console.log("name :", name);
+
   return (
     <div>
+      {/* <p>Name :{name}</p> */}
       <div className="flex justify-center mt-7">
         <img className="w-[66%]" src={pic1} alt="" />
       </div>
@@ -55,30 +69,30 @@ const Home = () => {
           <div className="flex justify-center mx-auto">
             <img
               style={{
-                objectFit: 'contain',
-                height: '320px',
-                padding: '1rem',
-                marginTop: '6rem',
+                objectFit: "contain",
+                height: "320px",
+                padding: "1rem",
+                marginTop: "6rem",
               }}
               src="https://images.meesho.com/images/marketing/1649760442043.webp"
               alt=""
             />
             <img
               style={{
-                objectFit: 'contain',
-                height: '280px',
-                padding: '1rem',
-                marginTop: '8rem',
+                objectFit: "contain",
+                height: "280px",
+                padding: "1rem",
+                marginTop: "8rem",
               }}
               src="https://images.meesho.com/images/marketing/1649760423313.webp"
               alt=""
             />
             <img
               style={{
-                objectFit: 'contain',
-                height: '280px',
-                padding: '1rem',
-                marginTop: '8rem',
+                objectFit: "contain",
+                height: "280px",
+                padding: "1rem",
+                marginTop: "8rem",
               }}
               src="https://images.meesho.com/images/marketing/1649759799809.webp"
               alt=""
@@ -97,11 +111,11 @@ const Home = () => {
             <div>
               <img
                 style={{
-                  objectFit: 'contain',
-                  height: '280px',
-                  padding: '1rem',
-                  marginLeft: '3%',
-                  marginTop: '8rem',
+                  objectFit: "contain",
+                  height: "280px",
+                  padding: "1rem",
+                  marginLeft: "3%",
+                  marginTop: "8rem",
                 }}
                 src="https://images.meesho.com/images/marketing/1649760808952.webp"
                 alt=""
@@ -114,10 +128,10 @@ const Home = () => {
             <div>
               <img
                 style={{
-                  objectFit: 'contain',
-                  height: '280px',
-                  padding: '1rem',
-                  marginTop: '8rem',
+                  objectFit: "contain",
+                  height: "280px",
+                  padding: "1rem",
+                  marginTop: "8rem",
                 }}
                 src="https://images.meesho.com/images/marketing/1649760703179.webp"
                 alt=""
@@ -130,10 +144,10 @@ const Home = () => {
             <div>
               <img
                 style={{
-                  objectFit: 'contain',
-                  height: '280px',
-                  padding: '1rem',
-                  marginTop: '8rem',
+                  objectFit: "contain",
+                  height: "280px",
+                  padding: "1rem",
+                  marginTop: "8rem",
                 }}
                 src="https://images.meesho.com/images/marketing/1649760786763.webp"
                 alt=""
@@ -156,7 +170,7 @@ const Home = () => {
       <div className="mx-auto mt-16">
         <Heading>Products For You</Heading>
       </div>
-      <div style={{ display: 'flex' }}>
+      <div style={{ display: "flex" }}>
         <div>
           <div className="leading-14">
             <Accordion defaultIndex={[0]} allowMultiple>
@@ -166,7 +180,7 @@ const Home = () => {
                     onMouseLeave={() => setsortingHover(false)}
                     onClick={() => setsortingHover(!sortingHover)}
                     className={`  hover:bg-slate-400 cursor-pointer flex flex-row px-4 py-1 border gap-x-2 ${
-                      sortingHover && 'group'
+                      sortingHover && "group"
                     } `}
                   >
                     <div>Sort By</div>
@@ -226,7 +240,7 @@ const Home = () => {
       </div>
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
