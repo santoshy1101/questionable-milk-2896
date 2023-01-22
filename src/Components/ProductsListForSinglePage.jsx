@@ -17,12 +17,13 @@ const ProductsListForSinglePage = (prop) => {
   const loc = useLocation()
   // console.log(loc);
   const getProducts = async (arg = 1) => {
+   const path="allsarees"
     // let newaPath =pathname.split("").filter((el)=> el!=="/" && el!== "%" && el!=="2" && el!=="0").join("").toLocaleLowerCase()
     let newPath = path.replaceAll(' ', '').toLowerCase()
     setLoading(true)
     axios
       .get(
-        `https://meshoo-mock-server-app.onrender.com/${newPath}?_page=${page}&_limit=16`,
+        `https://meshoo-mock-server-app.onrender.com/allsarees?_page=${page}&_limit=16`,
       )
       .then((res) => {
         setLoading(false)
@@ -32,7 +33,10 @@ const ProductsListForSinglePage = (prop) => {
         console.log(err)
         setLoading(false)
       })
-  }
+
+    }
+
+    console.log(data)
 
   useEffect(() => {
     getProducts(page)
@@ -47,10 +51,14 @@ const ProductsListForSinglePage = (prop) => {
   if (loading) {
     return <Loading />
   }
+ 
+  // console.log("filt",data)
+
+
   return (
     <div className="px-8 py-10">
       <div className="">
-        <div className="grid max-[320px]:grid-cols-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-8 gap-y-10 ">
+        <div className="grid  lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-8 gap-y-10 ">
           {data.length > 0 &&
             data.map((ele) => {
               return <ProductCard key={ele.id} {...ele} />
