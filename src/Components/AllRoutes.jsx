@@ -13,6 +13,7 @@ import Payment from "../Pages/Payment";
 import { Login } from "../Pages/Login";
 import AddToCart from "../Pages/AddToCart/AddToCart";
 import SearchComponent from "./SearchComponent";
+import PrivateRoute from "./PrivateRoute";
 
 const AllRoutes = () => {
   return (
@@ -43,12 +44,34 @@ const AllRoutes = () => {
         path="/dresses"
         element={<ProductsList productKey={"dresses"} path={"dresses"} />}
       />
-      <Route path="/checkout/address" element={<Address />} />
-
       <Route path="/login" element={<Login />}></Route>
-      <Route path="/payment" element={<Payment />} />
 
-      <Route path="/Add to cart" element={<AddToCart />} />
+      <Route
+        path="/payment"
+        element={
+          <PrivateRoute>
+            {" "}
+            <Payment />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/Add to cart"
+        element={
+          <PrivateRoute>
+            <AddToCart />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/checkout/address"
+        element={
+          <PrivateRoute>
+            <Address />
+          </PrivateRoute>
+        }
+      />
       <Route path="/search" element={<SearchComponent />} />
 
       {singleProductName.map((el, ind) => {

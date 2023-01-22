@@ -21,6 +21,9 @@ export default function AddToCart() {
       totalItem: store.addtoCartReducer.totalItem,
     };
   });
+
+  const isAuth = useSelector((store) => store.authReducer.isAuth);
+  console.log("isAuth: ", isAuth);
   // console.log("item:23242 ", item);
   console.log("totalAmount: ", totalAmount);
 
@@ -154,7 +157,7 @@ export default function AddToCart() {
               <p>Order Total </p>
               <p>₹{totalAmount}</p>
             </div>
-            <Link to={"/address"}>
+            <Link to={"/checkout/address"}>
               <div className="py-2 my-2 md:text-2xl text-[14px] text-center bg-[#F43397] rounded-lg text-slate-50">
                 Continue
               </div>

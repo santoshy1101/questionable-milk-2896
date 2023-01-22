@@ -14,6 +14,7 @@ import { useDebounce } from "use-debounce";
 import ProductsList from "../Pages/ProductsList";
 import ProductCard from "./ProductCard";
 import SearchComponent from "./SearchComponent";
+import { FcBusinessman } from "react-icons/fc";
 const catList = [
   "Women Ethnic",
   "Women Western",
@@ -40,6 +41,19 @@ const Navbar = () => {
   const [sarees, setSarees] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   // const [showDataSearch,setShowDataSearch]=useState(true)
+
+  //UserName Logic
+  const isAuth = useSelector((store) => store.authReducer.isAuth);
+  console.log("isAuth: ", isAuth);
+  let profileNameGet = JSON.parse(localStorage.getItem("dataSignup"));
+  // console.log("profileNameGet: ", profileNameGet);
+  // if(!profileName)
+  let profileName;
+  if (profileNameGet !== null) {
+    profileName = profileNameGet[0].name;
+  }
+  // console.log("profileName: ", profileName);
+  // console.log("profileName: ", profileName);
 
   useEffect(() => {
     fetch("https://meshoo-mock-server-app.onrender.com/allsarees")
@@ -167,7 +181,11 @@ const Navbar = () => {
                 }`}
               >
                 <div className="">
-                  <VscAccount size={20} />
+                  {isAuth ? (
+                    <FcBusinessman size={20} />
+                  ) : (
+                    <VscAccount size={20} />
+                  )}
                 </div>
                 <div>Profile</div>
               </div>
@@ -253,22 +271,32 @@ const Navbar = () => {
           onMouseEnter={(e) => profileHandler(e.target.textContent)}
           className={`${profile === "profile" ? "block" : "hidden"} `}
         >
-          <div className="  border absolute top-[68px] bg-white right-5 rounded-md shadow-2xl gap-y-4 py-4 w-[250px] flex flex-col px-4 group">
+          <div className="  border absolute top-[50px] bg-white right-5 rounded-md shadow-2xl gap-y-4 py-4 w-[250px] flex flex-col px-4 group">
             <div>
-              <p className="text-xl font-semibold">Hello, User Or Admin</p>
+              <p className="text-xl font-semibold">
+                {isAuth ? profileName : "Hello, User Or Admin"}
+              </p>
               <p className="text-[12px] font-semibold text-slate-400">
                 To access your Meeshoo account
               </p>
             </div>
-            <Link to="login">
-              {" "}
-              <div className="bg-[#F43397] cursor-pointer rounded-[4px] text-slate-50 text-center py-3 font-semibold text-xl">
-                User
-              </div>{" "}
-            </Link>
-            <div className="bg-[#F43397] cursor-pointer rounded-[4px] text-slate-50 text-center py-3 font-semibold text-xl">
-              Admin
-            </div>
+            {isAuth ? (
+              ""
+            ) : (
+              <>
+                {" "}
+                <Link to="login">
+                  {" "}
+                  <div className="bg-[#F43397] cursor-pointer rounded-[4px] text-slate-50 text-center py-3 font-semibold text-xl">
+                    User
+                  </div>{" "}
+                </Link>
+                <div className="bg-[#F43397] cursor-pointer rounded-[4px] text-slate-50 text-center py-3 font-semibold text-xl">
+                  Admin
+                </div>
+              </>
+            )}
+
             <div className="border-[0.5px]"></div>
 
             <div className="flex items-center gap-x-4">
