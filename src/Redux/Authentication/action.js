@@ -9,7 +9,7 @@ const loginRequestAction = () => {
   return { type: USER_LOGIN_REQUEST };
 };
 
-const loginSuccessAction = (payload) => {
+export const loginSuccessAction = (payload) => {
   return { type: USER_LOGIN_SUCCESS, payload };
 };
 

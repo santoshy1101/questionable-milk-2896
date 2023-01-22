@@ -21,6 +21,9 @@ export default function AddToCart() {
       totalItem: store.addtoCartReducer.totalItem,
     };
   });
+
+  const isAuth = useSelector((store) => store.authReducer.isAuth);
+  console.log("isAuth: ", isAuth);
   // console.log("item:23242 ", item);
   console.log("totalAmount: ", totalAmount);
 

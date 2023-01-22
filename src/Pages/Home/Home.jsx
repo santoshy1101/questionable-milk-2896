@@ -56,7 +56,7 @@ const Home = () => {
       setName(isAuth[0].name);
     }
   }, []);
-  console.log("name :", name);
+  // console.log("name :", name);
 
   return (
     <div>
