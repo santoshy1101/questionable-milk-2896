@@ -26,6 +26,8 @@ function SingleProductPage({ productKey }) {
   console.log("item: ", item);
   const [addedCart, setAddedCart] = useState(false);
   const [productCount, setProductCount] = useState(0);
+  const [size, setSize] = useState("");
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const toast = useToast()
@@ -47,31 +49,32 @@ function SingleProductPage({ productKey }) {
     
       return;
     }
-    // if (newProduct === product) {
-    //   alert("You Have alerady added");
-    //   return;
-    // }
+
+    let updateProduct={...newProduct,size}
+    axios.post("http://localhost:8080/posts", updateProduct);
+
     dispatch(addtoCartAction(newProduct));
     arr.push(newProduct);
 
     setAddedCart(true);
   };
 
+  const handleSize = (e) => {
+    // console.log("handleSIze");
+    let newSize =e.target.innerText
+    setSize(newSize)
+  };
+
   useEffect(() => {
-    // axios(`https://product-list-api.onrender.com/saree/${id}`).then((res) => {
-    //   // console.log("res: ", res);
-    //   // console.log(res.data);
-    //   setProduct(res.data);
-    // });
     dispatch(singleProduct(newProductkey, id));
     localStorage.setItem("cardAdded", JSON.stringify(product));
 
-    //  .then(res=> dispatch(addedCart(res.data)))
+    setSize(product.size);
+    // return () => {
+    //   return dispatch(singleProduct(newProductkey, id));
+    // };
   }, [id]);
-  //   console.log("id", id);
-  //   console.log("product: ", product);
 
-  // console.log("state: ", state);
 
   return (
     <div>
@@ -124,12 +127,24 @@ function SingleProductPage({ productKey }) {
           <p className="delivery">Free Delivery</p>
         </div>
 
-        <div className="mx-3 py-3 px-5 border-solid border border-sky-rgb(240 240 240)  rounded my-3 ">
-          <h2 className="font-bold my-3">Select Size</h2>
-          <p className="border border-solid border-sky-rgb(244 51 151) rounded my-1 ">
-            Free Size
-          </p>
-        </div>
+          <div className="mx-3 py-3 px-5 border-solid border border-sky-rgb(240 240 240)  rounded my-3 ">
+            <h2 className="font-bold my-3">Select Size</h2>
+            <div className="flex gap-x-5">
+              {product.size &&
+                product.size.map((el, index) => {
+                  return (
+                    <button
+                      onClick={(e) => handleSize(e)}
+                      className="border px-4 text-lg font-semibold rounded-2xl hover:text-[#F43397] 
+      hover:border-[#F43397] duration-200 text-slate-800"
+                      key={index}
+                    >
+                      {el}
+                    </button>
+                  );
+                })}
+            </div>
+          </div>
 
         <div className="mx-3 py-3 px-5 border-solid border border-sky-rgb(240 240 240)  rounded my-3">
           <h2 className="my-5">Product Details</h2>

@@ -9,6 +9,9 @@ import AddToCart from "../Pages/AddToCart";
 import NewAccount from "../Pages/SignUp";
 import ProductsList from "../Pages/ProductsList";
 
+import Payment from "../Pages/Payment";
+import { Login } from "../Pages/Login";
+
 const AllRoutes = () => {
   return (
     <Routes>
@@ -25,6 +28,10 @@ const AllRoutes = () => {
       <Route path="/bedsheets" element={<ProductsList path={"bedsheets"} />} />
       <Route path="/dresses" element={<ProductsList path={"dresses"} />} />
       <Route path="/address" element={<Address />} />
+
+      <Route path="/login" element={<Login/>}></Route>
+      <Route path="/payment" element={<Payment />} />
+
       <Route path="/Add to cart" element={<AddToCart />} />
 
       {singleProductName.map((el, ind) => {

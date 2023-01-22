@@ -6,12 +6,20 @@ import { Link, useLocation } from "react-router-dom";
 //import {AiFillStar} from "react-icons/ai";
 import {AiFillStar} from "react-icons/ai"
 
-const ProductCard = ({  onwards,delivery, rating,reviews, id, img1, name, price }) => {
 
-  const {pathname} = useLocation()
-      let newaPath =pathname.split("").filter((el)=> el!=="/" && el!== "%" && el!=="2" && el!=="0").join("")
-      console.log("location",newaPath)
-      
+const ProductCard = ({
+  onwards,
+  delivery,
+  rating,
+  reviews,
+  id,
+  img1,
+  name,
+  price,
+  productKey,
+}) => {
+  // console.log("Prodcut key of ", productKey);
+
 
   return (
     <div className='group over' >

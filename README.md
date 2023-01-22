@@ -11,6 +11,6 @@ address & payment page ->ravi;
 
  daynamic product, page admin panel ->rahul
 
-home, page login page -> Mohammad Sahil
+home, signup-page login page -> Mohammad Sahil
 
 navbar , search functionality, all routing through navbar ->Santosh </h3>
