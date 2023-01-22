@@ -12,6 +12,7 @@ import ProductsList from "../Pages/ProductsList";
 import Payment from "../Pages/Payment";
 import { Login } from "../Pages/Login";
 import AddToCart from "../Pages/AddToCart/AddToCart";
+import SearchComponent from "./SearchComponent";
 
 const AllRoutes = () => {
   return (
@@ -48,6 +49,7 @@ const AllRoutes = () => {
       <Route path="/payment" element={<Payment />} />
 
       <Route path="/Add to cart" element={<AddToCart />} />
+      <Route path="/search" element={<SearchComponent />} />
 
       {singleProductName.map((el, ind) => {
         // console.log("dsfdsffefewfefeew", el);
@@ -59,6 +61,7 @@ const AllRoutes = () => {
           />
         );
       })}
+
       {/* {singleProductName.map((el, ind) => (
         <Route
           key={ind}
