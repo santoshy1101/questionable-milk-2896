@@ -27,7 +27,11 @@ const AllRoutes = () => {
       <Route
         path="/alltopwear"
         element={
-          <ProductsList productKey={"alltopwear"} path={"All Top Wear"} p={1} />
+          <ProductsList
+            productKey={"All Top Wear"}
+            path={"All Top Wear"}
+            p={1}
+          />
         }
       />
       <Route
