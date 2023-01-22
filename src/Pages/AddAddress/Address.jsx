@@ -121,12 +121,14 @@ const Address = () => {
               </div>
             </div>
           </div>
-          <button
-            type="submit"
-            className=" bg-[#F43397] hover:shadow-md text-2xl py-2 rounded-xl text-slate-50"
-          >
-            Save Address & Continue
-          </button>
+          <Link to={"/payment"}>
+            <div
+              type="submit"
+              className=" text-center bg-[#F43397] hover:shadow-md text-2xl py-2 rounded-xl text-slate-50"
+            >
+              Save Address & Continue
+            </div>
+          </Link>
         </div>
       </form>
     </div>

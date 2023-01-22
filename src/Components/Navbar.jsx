@@ -271,7 +271,7 @@ const Navbar = () => {
           onMouseEnter={(e) => profileHandler(e.target.textContent)}
           className={`${profile === "profile" ? "block" : "hidden"} `}
         >
-          <div className="  border absolute top-[68px] bg-white right-5 rounded-md shadow-2xl gap-y-4 py-4 w-[250px] flex flex-col px-4 group">
+          <div className="  border absolute top-[50px] bg-white right-5 rounded-md shadow-2xl gap-y-4 py-4 w-[250px] flex flex-col px-4 group">
             <div>
               <p className="text-xl font-semibold">
                 {isAuth ? profileName : "Hello, User Or Admin"}
