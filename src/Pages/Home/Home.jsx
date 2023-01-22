@@ -13,8 +13,6 @@ import pic3 from "../../assets/buisnesswithZero.png";
 import Footer from "../../Components/Footer";
 import "./Home.css";
 import { useSelector } from "react-redux";
-import { useState } from "react";
-import { useEffect } from "react";
 const categoery = [
   {
     name: "Men top wear",
@@ -47,63 +45,36 @@ const price = [
 
 const Home = () => {
   const [sortingHover, setsortingHover] = React.useState(false);
-  const [name, setName] = useState("");
-
-  useEffect(() => {
-    let isAuth = JSON.parse(localStorage.getItem("dataSignup"));
-    // console.log("profileName: ", profileName[0].name);
-    if (isAuth) {
-      setName(isAuth[0].name);
-    }
-  }, []);
-  // console.log("name :", name);
-
   return (
     <div>
-      {/* <p>Name :{name}</p> */}
-      <div className="flex justify-center mt-7">
-        <img className="w-[66%]" src={pic1} alt="" />
+      <div className="flex justify-center mt-7 photoimg1">
+        <img className="w-[66%] " src={pic1} alt="" />
       </div>
-      <div className="flex justify-center align-middle mx-auto w-[70%] ">
+      <div className="flex justify-center align-middle mx-auto w-[70%] flexdiv">
         <div className="section123">
-          <div className="flex justify-center mx-auto">
+          <div className="flex justify-center mx-auto photodiv">
             <img
-              style={{
-                objectFit: "contain",
-                height: "320px",
-                padding: "1rem",
-                marginTop: "6rem",
-              }}
+              className="photoimg"
               src="https://images.meesho.com/images/marketing/1649760442043.webp"
               alt=""
             />
             <img
-              style={{
-                objectFit: "contain",
-                height: "280px",
-                padding: "1rem",
-                marginTop: "8rem",
-              }}
+              className="photoimg"
               src="https://images.meesho.com/images/marketing/1649760423313.webp"
               alt=""
             />
             <img
-              style={{
-                objectFit: "contain",
-                height: "280px",
-                padding: "1rem",
-                marginTop: "8rem",
-              }}
+              className="photoimg"
               src="https://images.meesho.com/images/marketing/1649759799809.webp"
               alt=""
             />
           </div>
         </div>
       </div>
-      <div className="flex justify-center align-middle mx-auto w-[70%]">
+      <div className="flex justify-center align-middle mx-auto w-[70%] flexdiv">
         <div className="section245">
           <div className="flex justify-center mx-auto">
-            <div className="mt-[22%] mr-3">
+            <div className="mt-[22%] mr-3 seconddiv">
               <div className="px-16 py-3 m-auto text-2xl font-semibold rounded-full bg-slate-200">
                 View All
               </div>
@@ -161,10 +132,10 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="flex justify-center mt-7">
+      <div className="flex justify-center mt-7 photoimg3">
         <img className="w-[63%]" src={pic3} alt="" />
       </div>
-      <div className="flex justify-center mt-7">
+      <div className="flex justify-center mt-7 photoimg3">
         <img className="w-[66%]" src={pic2} alt="" />
       </div>
       <div className="mx-auto mt-16">
@@ -238,7 +209,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

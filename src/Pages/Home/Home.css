@@ -1,17 +1,50 @@
-.section123{
-    background-image: url("https://images.meesho.com/images/marketing/1649759774600.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    width:100%;
-    margin-top: 3%;
+.section123 {
+  background-image: url("https://images.meesho.com/images/marketing/1649759774600.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  margin-top: 3%;
+}
+.section245 {
+  background-image: url("https://images.meesho.com/images/marketing/1664343269674.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  margin-top: 3%;
+}
+.photoimg {
+  object-fit: contain;
+  height: 320px;
+  padding: 1rem;
+  margin-top: 6rem;
+}
+/*
+@media only screen and (max-width: 600px) {
   
-    
-    
+  .photodiv {
+    display: flex;
+    flex-direction: column;
+  }
+  .photoimg {
+    margin-top: 0px;
+  }
+  .photoimg1 {
+    margin: 20px -71px;
+  }
+  .flexdiv {
+    width: 98%;
+  }
+  .seconddiv {
+    margin: 8px -220px 30px 40px;
+  }
+  .photoimg3 {
+    margin: 20px -80px;
+  }
+   .photoimg2 {
+    margin-top: 0px;
+  } 
 }
-.section245{
-    background-image: url("https://images.meesho.com/images/marketing/1664343269674.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    width:100%;
-    margin-top: 3%;
+@media only screen and (min-width: 600px) and (max-width: 991px) {
+ 
 }
+*/
