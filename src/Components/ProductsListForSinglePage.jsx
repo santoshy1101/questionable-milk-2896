@@ -3,7 +3,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import {  useLocation, useParams, useSearchParams} from 'react-router-dom'
-import SidebarSaree from '../Components/Saree/SidebarSaree'
+
 import ProductCard from '../Components/ProductCard'
 import Loading from '../Components/Loader/Loading'
 import Pagination from '../Components/Pagination/Pagination'
@@ -47,7 +47,7 @@ const ProductsListForSinglePage = (prop) => {
   }
   return (
     <div className='px-8 py-10'>
-    <div className="  ">
+    <div className="">
  
       <div className="grid max-[320px]:grid-cols-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-8 gap-y-10 ">
       {

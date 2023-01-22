@@ -1,29 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import "./AddToCart.css";
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import './AddToCart.css'
 import {
   decrementActionCart,
   getTotalActionCart,
   increamentActionCart,
   removeActionCart,
-} from "../Redux/AddtoCart/action";
-import { Link } from "react-router-dom";
-import axios from "axios";
+} from '../../Redux/AddtoCart/action'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 export default function AddToCart() {
-  const [totalPrice, setTotalPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0)
   const { item, totalAmount, totalItem } = useSelector((store) => {
     return {
       item: store.addtoCartReducer.item,
       totalAmount: store.addtoCartReducer.totalAmount,
       totalItem: store.addtoCartReducer.totalItem,
-    };
-  });
+    }
+  })
   // console.log("item:23242 ", item);
-  console.log("totalAmount: ", totalAmount);
+  console.log('totalAmount: ', totalAmount)
 
-  const dispatch = useDispatch();
-  const [overightData, setOverightData] = useState([]);
+  const dispatch = useDispatch()
+  const [overightData, setOverightData] = useState([])
 
   // const getData = () => {
   //   // axios.post("http://localhost:8080/posts",)
@@ -48,8 +48,8 @@ export default function AddToCart() {
     //   return curElem;
     // });
 
-    dispatch(getTotalActionCart());
-  }, [item]);
+    dispatch(getTotalActionCart())
+  }, [item])
 
   return (
     <>
@@ -78,8 +78,8 @@ export default function AddToCart() {
     font-medium
     text-[18px]"
             >
-              Cart{" "}
-              <span style={{ color: "rgb(153, 153, 153)" }}>
+              Cart{' '}
+              <span style={{ color: 'rgb(153, 153, 153)' }}>
                 | {totalItem} Item
               </span>
             </h1>
@@ -116,7 +116,7 @@ export default function AddToCart() {
                           </p>
                         </div>
 
-                        <p style={{ marginBottom: "18px" }}>{price}</p>
+                        <p style={{ marginBottom: '18px' }}>{price}</p>
 
                         <button
                           className="rem-class"
@@ -131,7 +131,7 @@ export default function AddToCart() {
                       </div>
                     </div>
                   </div>
-                );
+                )
               })}
           </div>
 
@@ -146,14 +146,14 @@ export default function AddToCart() {
               <p>Total Product Price </p>
               <p>₹{totalAmount}</p>
             </div>
-            <hr style={{ border: "1px solid rgb(240 240 240)" }} />
+            <hr style={{ border: '1px solid rgb(240 240 240)' }} />
             {/* style={{ border: "1px solid rgb(240 240 240)" }} */}
             <div className="order-class ">
               {/* className="flex justify-between items-center" */}
               <p>Order Total </p>
               <p>₹{totalAmount}</p>
             </div>
-            <Link to={"/address"}>
+            <Link to={'/address'}>
               <button className="ctn-class">Continue</button>
             </Link>
             <img
@@ -165,5 +165,5 @@ export default function AddToCart() {
         </div>
       )}
     </>
-  );
+  )
 }

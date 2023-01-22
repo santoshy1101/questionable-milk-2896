@@ -20,7 +20,8 @@ const ProductCard = ({
 }) => {
   // console.log("Prodcut key of ", productKey);
 
-
+  const {pathname} = useLocation()
+      let newaPath =pathname.split("").filter((el)=> el!=="/" && el!== "%" && el!=="2" && el!=="0").join("")
   return (
     <div className='group over' >
       <Link to={`/${newaPath}/${id}`}>
@@ -31,7 +32,7 @@ const ProductCard = ({
         <img className="w-[100%] rounded-tl-3xl  rounded-tr-3xl h-[100%] bg-cover" src={img1} alt={name} />
         </div>
         <div className="px-4 py-4" >
-        <div className="text-md font-semibold text-slate-400">
+        <div className="font-semibold text-md text-slate-400">
         {name}
         </div>
 
@@ -45,8 +46,8 @@ const ProductCard = ({
             <div className=" w-[110px] px-3 my-2 bg-slate-300 text-sm py-1 rounded-lg font-semibold">
             {delivery}
             </div>
-            <div className=" flex items-center gap-x-2" >
-            <div className=" gap-x-1 px-2 rounded-2xl text-slate-50 text-lg font-semibold flex bg-green-400 items-center">
+            <div className="flex items-center  gap-x-2" >
+            <div className="flex items-center px-2 text-lg font-semibold bg-green-400  gap-x-1 rounded-2xl text-slate-50">
             <p >{rating}</p>
             <div ><AiFillStar color="white" size={15}/></div>
             </div>

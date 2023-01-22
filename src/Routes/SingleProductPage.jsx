@@ -16,14 +16,14 @@ import "./SingleProductPage.css";
 function SingleProductPage({ productKey }) {
   // console.log("productKey: ", productKey);
   let newProductkey = productKey.replaceAll(" ", "").toLowerCase();
-  console.log("newProductkey: ", newProductkey);
+  // console.log("newProductkey: ", newProductkey);
   const { id } = useParams();
 
   // const [product, setProduct] = useState({});
   const product = useSelector((store) => store.productReducer.product);
 
   const item = useSelector((store) => store.addtoCartReducer.item);
-  console.log("item: ", item);
+  // console.log("item: ", item);
   const [addedCart, setAddedCart] = useState(false);
   const [productCount, setProductCount] = useState(0);
   const [size, setSize] = useState("");
@@ -83,7 +83,7 @@ function SingleProductPage({ productKey }) {
       <div className="flex">
         <div>
           <img
-            className="w-20 mx-1 border-solid border-2 border-sky-500  rounded"
+            className="w-20 mx-1 border-2 border-solid rounded border-sky-500"
             src={product.img1}
             alt=""
           />
@@ -100,7 +100,7 @@ function SingleProductPage({ productKey }) {
             />
           </div>
 
-          <div className="flex justify-evenly  name">
+          <div className="flex justify-evenly name">
             {/* <Link to={"Add to cart"}> */}
             <button className="addbtn" onClick={handleAddCart}>
               {addedCart ? "Card Added" : "Add to Cart"}
@@ -122,13 +122,13 @@ function SingleProductPage({ productKey }) {
       <div>
         <div className="mx-3 py-3 px-5 border-solid border border-sky-rgb(240 240 240)  rounded ">
           <h2 className="heading">{product.name}</h2>
-          <h2 className="font-bold font text-lg mt-2">{product.price}</h2>
+          <h2 className="mt-2 text-lg font-bold font">{product.price}</h2>
           <p className="rating">{product.rating}</p>
           <p className="delivery">Free Delivery</p>
         </div>
 
           <div className="mx-3 py-3 px-5 border-solid border border-sky-rgb(240 240 240)  rounded my-3 ">
-            <h2 className="font-bold my-3">Select Size</h2>
+            <h2 className="my-3 font-bold">Select Size</h2>
             <div className="flex gap-x-5">
               {product.size &&
                 product.size.map((el, index) => {

@@ -5,7 +5,7 @@ import SingleProductPage from '../Routes/SingleProductPage'
 
 import { singleProductName } from '../All Data/singleProductName'
 import Address from '../Pages/AddAddress/Address'
-import AddToCart from '../Pages/AddToCart'
+import AddToCart from '../Pages/AddToCart/AddToCart'
 import NewAccount from '../Pages/SignUp'
 import ProductsList from '../Pages/ProductsList'
 
@@ -36,6 +36,7 @@ const AllRoutes = () => {
 
       {singleProductName.map((el, ind) => {
         // console.log("dsfdsffefewfefeew", el);
+       el= el.replaceAll(" ","").toLowerCase()
         return (
           <Route
             key={ind}

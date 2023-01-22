@@ -2,7 +2,6 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import {  useLocation, useParams, useSearchParams} from 'react-router-dom'
-import SidebarSaree from '../Components/Saree/SidebarSaree'
 import ProductCard from '../Components/ProductCard'
 import Loading from '../Components/Loader/Loading'
 import Pagination from '../Components/Pagination/Pagination'
@@ -16,7 +15,7 @@ const ProductsList = (prop) => {
   let initState = searchParams.get('page')
   const [page, setPage]=useState(parseInt(initState)   || 1);
   const loc = useLocation();
-console.log(loc);
+
   const getProducts = async (arg=1) => {
     // let newaPath =pathname.split("").filter((el)=> el!=="/" && el!== "%" && el!=="2" && el!=="0").join("").toLocaleLowerCase()
     let newPath = path.replaceAll(' ', '').toLowerCase()
@@ -46,8 +45,8 @@ console.log(loc);
   }
   return (
     <div className='px-8 py-10'>
-    <div className="flex flex-row gap-x-20  justify-around  ">
-      <div className="border-2 hidden sm:block"  ><SidebarSaree/></div>
+    <div className="flex flex-row justify-around gap-x-20 ">
+      <div className="hidden border-2 sm:block"  >sidebar</div>
       <div className="grid max-[320px]:grid-cols-2 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-x-8 gap-y-10 ">
       {
         data.length > 0 && data.map((ele)=>{
