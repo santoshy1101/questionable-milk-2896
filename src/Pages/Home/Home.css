@@ -18,9 +18,9 @@
   padding: 1rem;
   margin-top: 6rem;
 }
-/*
+
 @media only screen and (max-width: 600px) {
-  
+  /* styles for small screens go here */
   .photodiv {
     display: flex;
     flex-direction: column;
@@ -40,11 +40,10 @@
   .photoimg3 {
     margin: 20px -80px;
   }
-   .photoimg2 {
+  /* .photoimg2 {
     margin-top: 0px;
-  } 
+  } */
 }
 @media only screen and (min-width: 600px) and (max-width: 991px) {
- 
+  /* styles for medium screens go here */
 }
-*/
