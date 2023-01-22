@@ -28,7 +28,7 @@ const Address=()=>{
     dispatch(handleAddress(e))
   };
     return (
-      <div className=" flex flex-col items-center py-16 bg-slate-100 ">
+      <div className=" flex flex-col items-center py-20 bg-slate-100 ">
       <form ref={form} onSubmit={handleSubmit}>
       <div className="flex flex-col gap-y-8 px-8 py-8  m-auto border rounded-3xl bg-white">
       <div className="flex flex-col">
@@ -80,7 +80,7 @@ const Address=()=>{
       </div>
       </div>
       <Link to="/payment">
-      <button type="submit" className=" bg-[#F43397] hover:shadow-md text-2xl py-2 rounded-xl text-slate-50">Save Address & Continue</button>
+      <button type="submit" className=" bg-[#F43397] hover:shadow-md text-2xl w-[100%] py-2 rounded-xl text-slate-50">Save Address & Continue</button>
       </Link>
      
     
