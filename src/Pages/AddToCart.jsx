@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./AddToCart.css";
 import {
+  addtoCartAction,
   decrementActionCart,
   getTotalActionCart,
   increamentActionCart,
@@ -19,8 +20,8 @@ export default function AddToCart() {
       totalItem: store.addtoCartReducer.totalItem,
     };
   });
-  // console.log("item:23242 ", item);
-  console.log("totalAmount: ", totalAmount);
+  console.log("item:23242 ", item);
+  // console.log("totalAmount: ", totalAmount);
 
   const dispatch = useDispatch();
   const [overightData, setOverightData] = useState([]);
@@ -38,6 +39,20 @@ export default function AddToCart() {
   //   console.log("Add");
   //   axios.post("http://localhost:8080/posts", newProduct);
   // };
+
+  const getData = () => {
+    axios
+      .get("https://meshoo-mock-server-app.onrender.com/addtocartdata")
+      .then((res) => {
+        console.log("addtocartdata", res.data.splice(0, 1));
+        console.log("res.data: ", res.data);
+        // dispatch(addtoCartAction(res.data));
+      });
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   useEffect(() => {
     // getData();
@@ -153,7 +168,7 @@ export default function AddToCart() {
               <p>Order Total </p>
               <p>₹{totalAmount}</p>
             </div>
-            <Link to={"/address"}>
+            <Link to={"/checkout/address"}>
               <button className="ctn-class">Continue</button>
             </Link>
             <img
