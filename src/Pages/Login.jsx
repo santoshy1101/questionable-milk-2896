@@ -89,7 +89,14 @@ export const Login = () => {
         }
       }, 1000);
     } else {
-      alert("First you need to sign up");
+      toast({
+        title: "First You Need To Sign Up",
+        description: "This Product Already Add In Cart",
+        status: "success",
+        duration: 1500,
+        isClosable: true,
+        position: "top",
+      });
       navigate("/signup");
     }
   };

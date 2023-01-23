@@ -54,10 +54,28 @@ function SingleProductPage({ productKey }) {
 
       setAddedCart(true);
 
-      alert("product added in cart");
+      // alert("product added in cart");
+      toast({
+        title: "Product Added In Cart",
+        description: "This Product Already Add In Cart",
+        status: "success",
+        duration: 1500,
+        isClosable: true,
+        position: "top",
+      });
+
       return;
     } else {
-      alert("please select the size");
+      // alert("please select the size");
+      toast({
+        title: "Please Select The Size",
+        description: "This Product Already Add In Cart",
+        status: "success",
+        duration: 1500,
+        isClosable: true,
+        position: "top",
+      });
+      
       return;
     }
     if (addedCart) {
@@ -113,12 +131,12 @@ function SingleProductPage({ productKey }) {
 
   return (
     <div>
-      <div className="flex flex-col mt-5 ml-20 mr-20  lg:flex-row md:flex-col">
+      <div className="flex flex-col mt-5 ml-20 mr-20 lg:flex-row md:flex-col">
         {/* left side */}
         <div className="flex">
           <div className="leftdiv">
             <img
-              className="w-20  mx-1 border-solid border-2 border-sky-500  rounded leftside"
+              className="w-20 mx-1 border-2 border-solid rounded border-sky-500 leftside"
               src={product.img1}
               alt=""
             />
@@ -135,7 +153,7 @@ function SingleProductPage({ productKey }) {
               />
             </div>
 
-            <div className="flex justify-evenly  name">
+            <div className="flex justify-evenly name">
               {/* <Link to={"Add to cart"}> */}
               <button className="addbtn" onClick={handleAddCart}>
                 {addedCart ? "Card Added" : "Add to Cart"}
@@ -157,7 +175,7 @@ function SingleProductPage({ productKey }) {
         <div>
           <div className="mx-3 py-3 px-5 border-solid border border-sky-rgb(240 240 240)  rounded rightside1">
             <h2 className="heading">{product.name}</h2>
-            <h2 className="font-bold font text-lg mt-2">{product.price}</h2>
+            <h2 className="mt-2 text-lg font-bold font">{product.price}</h2>
             {/* <p className="rating">{product.rating}</p> */}
             <div className="flex items-center my-[5px]">
               <div className=" gap-x-1 px-2 rounded-2xl text-slate-50 text-lg font-semibold flex bg-green-400 items-center  mr-[14px]">
@@ -174,7 +192,7 @@ function SingleProductPage({ productKey }) {
           </div>
 
           <div className="mx-3 py-3 px-5 border-solid border border-sky-rgb(240 240 240)  rounded my-3 sizediv ">
-            <h2 className="font-bold my-3">Select Size</h2>
+            <h2 className="my-3 font-bold">Select Size</h2>
             <div className="flex gap-x-5">
               {product.size &&
                 product.size.map((el, index) => {

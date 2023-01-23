@@ -4,6 +4,7 @@ import { ImLocation } from "react-icons/im";
 import React, { useReducer, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { handleAddress } from "../../Redux/OrderAddress/action";
+import { useToast } from '@chakra-ui/react';
 
 const Address = () => {
   // const [state, dispatch] = useReducer(reducer, initialState);
@@ -19,7 +20,17 @@ const Address = () => {
     for (let key in userDetails) {
       userDetails[key] ? (empty = false) : (empty = true);
     }
-    if (empty) alert("fill details");
+    if (empty){
+      toast({
+        title: "Fill Details",
+        description: "This Product Already Add In Cart",
+        status: "success",
+        duration: 1500,
+        isClosable: true,
+        position: "top",
+      });
+    } 
+    
     console.log(userDetails);
   };
 
@@ -27,9 +38,9 @@ const Address = () => {
     dispatch(handleAddress(e));
   };
   return (
-    <div className=" flex flex-col items-center py-16 bg-slate-100 ">
+    <div className="flex flex-col items-center py-16 bg-slate-100">
       <form ref={form} onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-y-8 px-8 py-8  m-auto border rounded-3xl bg-white">
+        <div className="flex flex-col px-8 py-8 m-auto bg-white border gap-y-8 rounded-3xl">
           <div className="flex flex-col">
             {<label>Name</label>}
             <input
