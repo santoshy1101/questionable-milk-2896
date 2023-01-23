@@ -6,10 +6,12 @@ https://www.meesho.com/
 <h3>
  womens_Ethnic [all saree], home furnishing[] ,[bedsheet,doormet] ,kitchen[kitchen storage] ,western [top,dresss]-> sakill;
 <br/>
+<h1/>All Member Responsibilities</h1>
+
  
 address & payment page ->ravi;
 
- daynamic product, page admin panel ->rahul
+daynamic product, page admin panel ->rahul
 
 home, signup-page login page -> Mohammad Sahil
 
