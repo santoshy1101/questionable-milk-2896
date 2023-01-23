@@ -22,10 +22,13 @@ ADDRESS & PAYMENT PAGE ->RAVI;
 </h3>
 
  <h2>NAVBAR</h2>
-![Screenshot (1324)](https://user-images.githubusercontent.com/107991675/213998137-d00d3fe8-3477-4834-be71-e3182abd5306.png)
+ ![Screenshot (1320)](https://user-images.githubusercontent.com/107991675/214000297-8b7ae4c9-ee25-4ca9-98a1-f3b419e31444.png)
+
+
 
 <h2>HOME</h2>
- ![Screenshot (1314)](https://user-images.githubusercontent.com/107991675/213998056-5d25ddec-dc57-4617-a5e8-9defab001582.png)
+![Screenshot (1318)](https://user-images.githubusercontent.com/107991675/214000343-ec9884ce-e25d-4707-a041-8809e8b00d21.png)
+
  
   <h2>PRODUCT LIST</h2>
 
