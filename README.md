@@ -22,7 +22,8 @@ ADDRESS & PAYMENT PAGE ->RAVI;
 </h3>
 
  <h2>NAVBAR</h2>
- ![Screenshot (1320)](https://user-images.githubusercontent.com/107991675/214000297-8b7ae4c9-ee25-4ca9-98a1-f3b419e31444.png)
+ ![Screenshot (1320)]()
+ <img src="https://user-images.githubusercontent.com/107991675/214000297-8b7ae4c9-ee25-4ca9-98a1-f3b419e31444.png">
 
 
 
