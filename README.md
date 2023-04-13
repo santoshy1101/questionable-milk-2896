@@ -1,7 +1,7 @@
 # questionable-milk-2896
 
 <h2>DEPLOYED LINK</h2>
-https://meshoo-clone.vercel.app/
+https://poetic-cobbler-9476b0.netlify.app/
 
 <h1/>All Member Responsibilities</h1>
 <h3>
