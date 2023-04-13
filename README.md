@@ -1,7 +1,7 @@
 # questionable-milk-2896
 
 <h2>NETLIFY LINK</h2>
-https://poetic-cobbler-9476b0.netlify.app/
+https://meshoo-clone.vercel.app/
 
 <H1>ALL PAGES ARE RESPONSIVE <H1/>
 
