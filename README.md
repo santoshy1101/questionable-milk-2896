@@ -1,6 +1,6 @@
 # questionable-milk-2896
 
-<h2>NETLIFY LINK</h2>
+<h2>DEPLOYED LINK</h2>
 https://meshoo-clone.vercel.app/
 
 <h1/>All Member Responsibilities</h1>
