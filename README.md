@@ -3,10 +3,6 @@
 <h2>NETLIFY LINK</h2>
 https://meshoo-clone.vercel.app/
 
-<H1>ALL PAGES ARE RESPONSIVE <H1/>
-
-
-<br/>
 <h1/>All Member Responsibilities</h1>
 <h3>
  NAVBAR ,ALL ROUTING THROUGH NAVBAR ,PRODUCT CARD, ADD TO CART->SANTOSH YADAV
